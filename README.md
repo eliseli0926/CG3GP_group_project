@@ -2,16 +2,19 @@
 
 # [Your Project Title Here]
 ## Team Members
-List your team members here. Link to each member's individual github account.
+Elise Li: eliseli0926
+Sophia: scho324
 
 ## Game Summary
 A one- or two-paragraph description of your game. If there are important story and/or character aspects, include them here.
 
 ## Genres
-The broad category (or categories) your game will fall under. Examples include first-person shooter (FPS), real-time strategy (RTS), puzzle, rogue-like, etc.
+- open-world
+- puzzle
+- horror
 
 ## Inspiration
-### [Inspiration Game 1 Title Here]
+### Where winds meet
 A brief description (one paragraph) of Inspiration Game 1. include images and a discussion of how it will influence your design. Provide a link to all sources.
 
 ### [Inspiration Game 2 Title Here]

@@ -25,6 +25,8 @@ our game may look) and a puzzle lock (as an example of the kinds of puzzles we w
 Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scroll perspective. We plan to take inspirations from its player movement and interactions with items/the environment, simple puzzles, and successful artistic choice for creating an immersive horror gameplay experience.
 
 <img width="750" height="420" alt="image" src="https://github.com/user-attachments/assets/864fb21f-ce06-4ccb-a804-61c6a4ebc866" />
+<img width="1000" height="563" alt="image" src="https://github.com/user-attachments/assets/ad0451f0-823f-40b0-95f5-ec7a571791b0" />
+
 
 
 ## Gameplay

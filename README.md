@@ -1,5 +1,3 @@
-# CG3GP_group_project
-
 # [TBD: Get Out?]
 ## Team Members
 Elise Li: eliseli0926
@@ -7,10 +5,10 @@ Elise Li: eliseli0926
 Sophia Cho: scho324
 
 ## Game Summary
-A one- or two-paragraph description of your game. If there are important story and/or character aspects, include them here.
+
+An eerie horror game where the user wakes up in an unknown location and must solve puzzles and interact with various mechanisms and people to obtain the information and/or items they need to escape the area alive. 
 
 ## Genres
-- open-world
 - puzzle
 - horror
 
@@ -29,18 +27,16 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 
 ## Gameplay
-A paragraph or bulleted list describing how the player will interact with the game, and the key gameplay mechanics that you plan to have implemented in your finalized game. Also use this section to broadly describe the expected user interface and game-controls.
 
 - Player wakes up in a room with doors leading to other rooms.
 - Player can explore each room by interacting with parts of the room, such as pulling on a rope, turning a knob, or discovering trap doors.
-- Player can do complex movements such as crouching and climbing.
+- Player can do complex movements such as crouching and climbing. Movement/interactions will primarily be done through the keyboard, and the camera view will be controlled through the mouse.
 - Player also slowly gathers information about the place, why they woke up there, and how to get out, as they acquire more clues by solving puzzles and talking to NPCs.
 - Player might have to run away from monsters (enemy AI) if we have enough time to implement them.
 
 
 ## Development Plan
 ### Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)
-Sketch out a rough idea of what parts of your game you will implement for the next submission, Project Checkpoint 1-2: Basic Mechanics and Scripting involving Unity textbook Chapters 5 through 9. You will come back to update this for each submission based on which things you've accomplished and which need to be prioritized next. This will help you practice thinking ahead as well as reflecting on the progress you've made throughout the semester.
 
 - Implement player view and movement
 - Item pickup and interaction

@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Grounded: " + IsGrounded() + "  Jump pressed: " + jumpAction.action.WasPressedThisFrame());
+
         Vector2 input = moveAction.action.ReadValue<Vector2>();
 
         // Camera's forward/right with the up/down tilt removed, so W always means "away from the camera".
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         // Face the direction we're walking.
         if (move != Vector3.zero) transform.forward = move;
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && IsGrounded())
+        if (jumpAction.action.WasPressedThisFrame() && IsGrounded())
         {
             body.AddForce(Vector3.up * jumpSpeed, ForceMode.VelocityChange);
         }

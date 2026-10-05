@@ -6,11 +6,15 @@ Sophia Cho: scho324
 
 ## Game Summary
 
-An eerie horror game where the user wakes up in an unknown location and must solve puzzles and interact with various mechanisms and people to obtain the information and/or items they need to escape the area alive. 
+An eerie third-person horror puzzle game where the player wakes up alone in a decaying manor with no memory of how they got there. To escape alive, they must explore room by room, collect items, and use them to unlock the house's mechanisms. Along the way, they piece together notes left behind by previous "guests" and avoid the house's caretaker, who wanders the halls.
 
 ## Genres
 - puzzle
 - horror
+
+
+## Story
+The manor's owner "collects" visitors: people who come to the house are drugged and locked in a room, and none have ever left. The owner enjoys watching people attempt to escape. The player is the newest guest. Each previous captive tried to escape and left behind notes, scratched symbols, and half-finished attempts.
 
 ## Inspiration
 ### Where Winds Meet
@@ -28,17 +32,39 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 ## Gameplay
 
-- Player wakes up in a room with doors leading to other rooms.
-- Player can explore each room by interacting with parts of the room, such as pulling on a rope, turning a knob, or discovering trap doors.
-- Player can do complex movements such as crouching and climbing. Movement/interactions will primarily be done through the keyboard, and the camera view will be controlled through the mouse.
-- Player also slowly gathers information about the place, why they woke up there, and how to get out, as they acquire more clues by solving puzzles and talking to NPCs.
-- Player might have to run away from monsters (enemy AI) if we have enough time to implement them.
+- **Camera:** Third person, dynamic. The camera follows behind the player and the player rotates it around the character with the mouse.
+- **Movement:** Simple directional movement (WASD) and jumping (Space). We might also add crouching and climbing.
+- **Core puzzle mechanic** The player picks up an item and uses it on a matching object in the world:
+  - key → locked door
+  - fuse → fuse box (turns on the lights / powers an elevator)
+  - torn page → diary (reveals a code or symbol needed elsewhere)
+- **Story progression:** The player finds notes from previous guests that explain the house and hint at puzzle solutions.
+- **Enemy:** The caretaker uses simple AI for now. It walks a predetermined path between waypoints, and if the player gets close enough it chases them in a straight line. Being caught sends the player back to the last checkpoint.
+- **Checkpoints:** The game saves a checkpoint each time the player enters a new room, so getting caught does not restart the whole game.
 
 
 ## Development Plan
 ### Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)
 
+<!-- [TODO] Strike through (~~like this~~) -->
+ 
 - Implement player view and movement
 - Item pickup and interaction
 - Puzzle prototype and mechanics for at least one puzzle, depending on how many puzzle types we choose to implement
 - Basic setting of the initial room the player wakes up in (e.g. furniture, decorations etc.)
+- *Changes from feedback:* We decided on "collect and use" to be our basic puzzle mechanic , chose a third-person dynamic camera, and decided on room-based checkpoints instead of a one-shot run.
+
+#### Additions
+<!-- [TODO] List anything major you built that wasn't planned, otherwise keep "Not applicable." -->
+
+### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
+ 
+- Replace placeholder primitives with 3D models and textured materials for furniture, doors, and puzzle objects.
+- Set up dim lighting, shadows, and fog to create the horror atmosphere.
+- Add the caretaker enemy: a model that patrols waypoints and chases the player in a straight line when close.
+- Implement 1–2 more re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate).
+- Add room-based checkpoints and respawning when the player is caught.
+
+## Development
+### Project Checkpoint 1-2
+**prefabs** for key, player, and room

@@ -43,7 +43,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             // GetComponentInParent also works if the collider is on a child of the object.
             IInteractable target = hit.collider.GetComponentInParent<IInteractable>();
-            if (target != null) target.Interact();
+            target?.Interact();
         }
     }
 }

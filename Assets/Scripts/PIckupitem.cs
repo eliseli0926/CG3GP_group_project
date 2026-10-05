@@ -10,29 +10,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PickupItem : MonoBehaviour
+public class PickupItem : MonoBehaviour, IInteractable
 {
     [Header("Item")]
     [Tooltip("Name stored in the inventory. Must match the Required Item on the lock this opens.")]
     [SerializeField] private string itemName = "Key";
 
     [Header("Input")]
-    [SerializeField] private InputActionReference interactAction; 
 
     private bool playerInRange;
 
-    private void Start()
+    public void Interact()
     {
-        interactAction.action.Enable();
-    }
-
-    private void Update()
-    {
-        if (playerInRange && interactAction.action.WasPressedThisFrame())
-        {
-            InventoryManager.Instance.AddItem(itemName);
-            Destroy(gameObject);   // remove the item from the world
-        }
+        if (!playerInRange) return;
+        InventoryManager.instance.AddItem(itemName);
+        Destroy(gameObject);
     }
 
     // Trigger events: fire when the player walks into / out of the item's trigger collider.

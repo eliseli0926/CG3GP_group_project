@@ -66,7 +66,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &2392775523882919819
 BoxCollider:
@@ -87,8 +87,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 4.30177, z: 1.6792967}
-  m_Center: {x: 0, y: 0.34491873, z: -0.018118024}
+  m_Size: {x: 1, y: 3.5433483, z: 1.0684718}
+  m_Center: {x: 2.196852e-16, y: -0.034291193, z: 0.047041014}
 --- !u!114 &6082773663586019952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,11 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3de1719bde2e1b4baa8fb83e051960e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction: {fileID: 0}
-  jumpAction: {fileID: 0}
+  moveAction: {fileID: 5761873024160707004, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
+    type: 3}
+  jumpAction: {fileID: 5893139634890307006, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
+    type: 3}
   moveSpeed: 4
-  jumpSpeed: 5
-  groundCheckDistance: 1.1
+  jumpSpeed: 8
+  groundCheckDistance: 3
 --- !u!1 &2284072195331428962
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +151,7 @@ GameObject:
   - component: {fileID: 1222801453194695566}
   - component: {fileID: 2937693671191563091}
   - component: {fileID: 69921931927639570}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +260,7 @@ GameObject:
   - component: {fileID: 4544783524002807307}
   - component: {fileID: 5471558292104272760}
   - component: {fileID: 6740846303364311587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +369,7 @@ GameObject:
   - component: {fileID: 2666904618305907773}
   - component: {fileID: 8779719710779262106}
   - component: {fileID: 7832039871848476267}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +478,7 @@ GameObject:
   - component: {fileID: 6191969223761006254}
   - component: {fileID: 3120065039168904155}
   - component: {fileID: 7554637481346141449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +587,7 @@ GameObject:
   - component: {fileID: 7781569064348255352}
   - component: {fileID: 1953044537421026490}
   - component: {fileID: 4466100815294304900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +696,7 @@ GameObject:
   - component: {fileID: 484384944405120193}
   - component: {fileID: 8542080558455149815}
   - component: {fileID: 5766933968123016111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

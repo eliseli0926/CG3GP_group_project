@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 8670460305089292489, guid: bbee4cebaafe944878fc39fd9671c447,
         type: 3}
       propertyPath: m_Name
-      value: table
+      value: Table
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -508,6 +508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
+    - target: {fileID: 2116497981320711237, guid: b597087acd9325745b92dabc5e1dae33,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6569740556025367221, guid: b597087acd9325745b92dabc5e1dae33,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -578,12 +583,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7687508119687268081, guid: b597087acd9325745b92dabc5e1dae33,
-        type: 3}
-      propertyPath: interactAction
-      value: 
-      objectReference: {fileID: 5864317874500515882, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -924,7 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1356665557}
-  pivotOffset: {x: 0, y: 2.2, z: 0}
+  pivotOffset: {x: 0, y: 2.5, z: 0}
   lookAction: {fileID: -362785334659116015, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
     type: 3}
   mouseSensitivity: 0.15
@@ -948,7 +947,7 @@ MonoBehaviour:
   maxDistance: 10
   interactLayers:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 63
 --- !u!1001 &1840665311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -964,18 +963,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 28553162832213460, guid: e33b121c493c3c5459634ff95bb1052d,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 28553162832213460, guid: e33b121c493c3c5459634ff95bb1052d,
+        type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 813691689610770863, guid: e33b121c493c3c5459634ff95bb1052d,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 813691689610770863, guid: e33b121c493c3c5459634ff95bb1052d,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1426758187469758028, guid: e33b121c493c3c5459634ff95bb1052d,
         type: 3}
@@ -1031,28 +1025,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534533113103120819, guid: e33b121c493c3c5459634ff95bb1052d,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534533113103120819, guid: e33b121c493c3c5459634ff95bb1052d,
-        type: 3}
-      propertyPath: jumpAction
-      value: 
-      objectReference: {fileID: 5893139634890307006, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
-        type: 3}
-    - target: {fileID: 2534533113103120819, guid: e33b121c493c3c5459634ff95bb1052d,
-        type: 3}
-      propertyPath: moveAction
-      value: 
-      objectReference: {fileID: 5761873024160707004, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
-        type: 3}
-    - target: {fileID: 2534533113103120819, guid: e33b121c493c3c5459634ff95bb1052d,
-        type: 3}
-      propertyPath: groundCheckDistance
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

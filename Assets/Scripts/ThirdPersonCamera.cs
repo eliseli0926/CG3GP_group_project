@@ -10,11 +10,11 @@ using UnityEngine.InputSystem;
 public class ThirdPersonCamera : MonoBehaviour
 {
     [Header("Target")]
-    [SerializeField] private Transform target;                      
+    [SerializeField] private Transform target;
     [SerializeField] private Vector3 pivotOffset = new Vector3(0f, 1.6f, 0f);
 
     [Header("Input")]
-    [SerializeField] private InputActionReference lookAction;        
+    [SerializeField] private InputActionReference lookAction;
     [SerializeField] private float mouseSensitivity = 0.15f;
 
     [Header("Orbit")]
@@ -28,7 +28,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void Start()
     {
         lookAction.action.Enable();
-        Cursor.lockState = CursorLockMode.Locked;  // hide the mouse while playing 
+        Cursor.lockState = CursorLockMode.Locked;  // hide the mouse while playing
     }
 
     private void LateUpdate()

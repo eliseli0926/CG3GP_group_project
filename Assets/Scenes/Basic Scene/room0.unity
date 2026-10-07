@@ -187,6 +187,11 @@ PrefabInstance:
       propertyPath: itemName
       value: Mystery Key
       objectReference: {fileID: 0}
+    - target: {fileID: 7827608687440965148, guid: b597087acd9325745b92dabc5e1dae33,
+        type: 3}
+      propertyPath: itemName
+      value: Mystery Key
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1517,7 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactAction: {fileID: 5864317874500515882, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
     type: 3}
-  maxDistance: 15
+  maxDistance: 10
   interactLayers:
     serializedVersion: 2
     m_Bits: 63

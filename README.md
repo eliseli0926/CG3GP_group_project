@@ -96,8 +96,6 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 - DoorInteractable is the main script for any doors, and implements the IInteractable interface. If the player is close enough, we can open/close any unlocked doors. If the door requires an item, the player must have the matching one in their inventory to unlock and open it.
 
-- PlayerInteractor is the script for player interaction and attaches to the camera. Upon click, it shoots a ray in the direction of the camera where the crosshair dot is pointing and determines if there is an IInteractable there. It ignores any trigger colliders so that the dot has to be on the object itself and not its vicinity. If the collided object is interactable, it calls that object's Interact() function.
-
 - PlayerMovement is the script used for player movement (WASD/jump) based on the camera's 3rd-person POV.
 
 - ThirdPersonCamera handles camera movement, orbiting around the player based on where the user's mouse moves.

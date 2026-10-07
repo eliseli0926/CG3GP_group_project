@@ -23,7 +23,7 @@ public class PickupItem : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (!playerInRange) return;
-        InventoryManager.instance.AddItem(itemName);
+        InventoryManager.Instance.AddItem(itemName);
         Destroy(gameObject);
     }
 

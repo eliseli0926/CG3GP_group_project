@@ -33,6 +33,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
+        if (InventoryUI.CursorFree) return;   // clicks are for the UI right now, not the world
         if (!interactAction.action.WasPressedThisFrame()) return;
 
         // (0.5, 0.5) is the exact center of the screen, where the crosshair is.

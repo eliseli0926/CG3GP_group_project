@@ -38,8 +38,8 @@ public class DoorInteractable : MonoBehaviour, IInteractable
             isOpen = true;
             return;
         }
-        if (InventoryManager.instance.HasItem(requiredItemName)) {
-            InventoryManager.instance.RemoveItem(requiredItemName);
+        if (InventoryManager.Instance.HasItem(requiredItemName)) {
+            InventoryManager.Instance.RemoveItem(requiredItemName);
             transform.Rotate(0f, openAngle, 0f);
             isOpen = true;
             isUnlocked = true;

@@ -76,7 +76,7 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 <!-- [TODO] Add screenshots and explain how our stuff works -->
 
-**prefabs** for key, player, table, room, and door
+**prefabs** for key, player, room, and door, plus basic furniture like table and shelf
 
 - Player: \_\_\_\_
 - Key: our first example of an interactable object, and also of an item that can be picked up to be held in the inventory. Along with the PickupItem script, it has two different colliders; one is a trigger collider for detecting if the player is close enough to reasonably interact with it, and the other is for actual player interaction.

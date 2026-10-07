@@ -54,7 +54,7 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 - ~~Implement player view and movement~~
 - ~~Item pickup and interaction~~
-- Puzzle prototype and mechanics for at least one puzzle, depending on how many puzzle types we choose to implement
+- ~~Puzzle prototype and mechanics for at least one puzzle, depending on how many puzzle types we choose to implement~~
 - Basic setting of the initial room the player wakes up in (e.g. furniture, decorations etc.)
 - _Changes from feedback:_ We decided on "collect and use" to be our basic puzzle mechanic , chose a third-person dynamic camera, and decided on room-based checkpoints instead of a one-shot run.
 
@@ -76,19 +76,24 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 <!-- [TODO] Add screenshots and explain how our stuff works -->
 
-**prefabs** for key, player, table, and room
+**prefabs** for key, player, table, room, and door
 
 - Player: \_\_\_\_
-- Key: our first example of an interactable item, and also of an item that can be picked up to be held in the inventory. Along with the PickupItem script, it has two different colliders; one is a trigger collider for detecting if the player is close enough to reasonably interact with it, and the other is for actual player interaction.
+- Key: our first example of an interactable object, and also of an item that can be picked up to be held in the inventory. Along with the PickupItem script, it has two different colliders; one is a trigger collider for detecting if the player is close enough to reasonably interact with it, and the other is for actual player interaction.
+- Door: our first example of a 'puzzle', and is also an interactable object with a close-enough range. A door can optionally have a required item to be opened. If the user does not have an item of that particular name, it will not move. It opens/closes instantly when unlocked with a basic rotation transformation, but we plan to later add animations to its movement once we learn.
 
 **scripts**
 
 - We have the IInteractable interface so that any interactable object will implement the Interact() function with their own behavior upon being clicked on.
 
 - InventoryManager is the basic storage of items the user can pick up to solve puzzles with. It will likely be fleshed out more in the future.
-- PickupItem is the main script for key and any future items that can be put into the inventory, and implements the IInteract interface. It uses the object's trigger collider to check if the player is close enough (so they can't pick something up from the other end of the room), and if so, its implemented Interact() will put its name into the inventory and delete the object so it disappears and is no longer interactable.
+
+- PickupItem is the main script for key and any future items that can be put into the inventory, and implements the IInteractable interface. It uses the object's trigger collider to check if the player is close enough (so they can't pick something up from the other end of the room), and if so, its implemented Interact() will put its name into the inventory and delete the object so it disappears and is no longer interactable.
+
+- DoorInteractable is the main script for any doors, and implements the IInteractable interface. If the player is close enough, we can open/close any unlocked doors. If the door requires an item, the player must have the matching one in their inventory to unlock and open it.
 
 - PlayerInteractor is the script for player interaction and attaches to the camera. Upon click, it shoots a ray in the direction of the camera where the crosshair dot is pointing and determines if there is an IInteractable there. It ignores any trigger colliders so that the dot has to be on the object itself and not its vicinity. If the collided object is interactable, it calls that object's Interact() function.
+
 - PlayerMovement is the script used for player movement (WASD/jump) based on the camera's 3rd-person POV.
 
 - ThirdPersonCamera handles camera movement, orbiting around the player based on where the user's mouse moves.

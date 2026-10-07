@@ -16,6 +16,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string requiredItemName = "Key";
     [SerializeField] private float openAngle = 90f;
+    [SerializeField] private string lockedMessage = "This door is locked... I don't have the right key.";
 
     private bool playerInRange;
     private bool isOpen;
@@ -43,7 +44,9 @@ public class DoorInteractable : MonoBehaviour, IInteractable
             transform.Rotate(0f, openAngle, 0f);
             isOpen = true;
             isUnlocked = true;
+            return;
         };
+        MessagePopup.Instance.Show(lockedMessage);
     }
 
 

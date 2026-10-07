@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // MessagePopup.cs
 // Displays a popup text when the user interacts with something and needs to
@@ -16,14 +17,16 @@ public class MessagePopup : MonoBehaviour
 {
     public static MessagePopup Instance {get; private set;}
 
+    [Header("UI")]
     [Tooltip("The panel that holds the message.")]
     [SerializeField] private GameObject popupPanel;
-
     [Tooltip("Text inside the popup panel.")]
     [SerializeField] private TMP_Text messageText;
 
+    [Tooltip("The duration to display the message.")]
     [SerializeField] private float displaySeconds = 3f;
 
+    // The remaining time until the message popup disappears.
     private float timeLeft;
 
     void Start()

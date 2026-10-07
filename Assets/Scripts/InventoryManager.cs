@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // InventoryManager.cs
 // Keeps track of the items the player is carrying. There is only one in the

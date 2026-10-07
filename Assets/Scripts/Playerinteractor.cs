@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // PlayerInteractor.cs
 // Lets the player interact with objects by aiming the center of the screen

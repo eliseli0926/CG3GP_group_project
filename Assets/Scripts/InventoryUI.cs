@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // InventoryUI.cs
 // Shows the player's inventory on screen. Pressing Esc frees the mouse cursor

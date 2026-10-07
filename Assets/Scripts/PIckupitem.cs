@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // PickupItem.cs
 // An item the player can pick up (key, fuse, crank handle...). When the player
@@ -17,9 +18,9 @@ public class PickupItem : MonoBehaviour, IInteractable
     [SerializeField] private string itemName = "Key";
 
     [Header("Input")]
-
     private bool playerInRange;
 
+    // The item will physically disappear upon being picked up and added to inventory.
     public void Interact()
     {
         if (!playerInRange) return;

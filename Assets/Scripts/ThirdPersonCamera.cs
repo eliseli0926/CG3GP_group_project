@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // ThirdPersonCamera.cs
 // Third-person camera that stays behind the player and orbits around them

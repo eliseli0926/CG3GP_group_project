@@ -1,3 +1,4 @@
+// Elise Li, Sophia Cho
 // ============================================================================
 // PlayerMovement.cs
 // Moves the player with WASD relative to the camera and jumps with Space.
@@ -10,8 +11,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Input")]
-    [SerializeField] private InputActionReference moveAction; 
-    [SerializeField] private InputActionReference jumpAction; 
+    [SerializeField] private InputActionReference moveAction;
+    [SerializeField] private InputActionReference jumpAction;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 4f;

@@ -24,7 +24,7 @@ The manor's owner "collects" visitors: people who come to the house are drugged 
 ### Where Winds Meet
 
 Where Winds Meet is a wuxia open-world game, played in the third person POV. The main inspirations from this game are the puzzles in the dungeons, as well as puzzles that some chests/treasures are locked behind. Screenshots of a dungeon layout (for how the atmosphere of
-our game may look) and a puzzle lock (as an example of the kinds of puzzles we were originally interested in) are provided. 
+our game may look) and a puzzle lock (as an example of the kinds of puzzles we were originally interested in) are provided. As the kinds of puzzles in this game are currently out-of-scope, we mainly focus on the third person POV and darker atmosphere/lighting as our inspirations. 
 <img width="2360" height="1538" alt="WWM_dungeon" src="https://github.com/user-attachments/assets/c2982cfa-ed27-476a-803f-c2079d7380e4" />
 <img width="1338" height="1459" alt="WWM_puzzle" src="https://github.com/user-attachments/assets/7cc2eda4-e35e-4682-a28b-2ddabf801f8d" />
 

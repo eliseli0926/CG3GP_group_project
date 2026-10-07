@@ -1,4 +1,4 @@
-# [TBD: Get Out?]
+# Get Out
 
 ## Team Members
 
@@ -78,7 +78,7 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 **prefabs** for key, player, room, and door, plus basic furniture like table and shelf
 
-- Player: \_\_\_\_
+- Player: The player prefab is the character the user controls. It has a Rigidbody and a Capsule Collider. The PlayerMovement script reads WASD input from our Input Actions asset and moves the player relative to the direction the camera is facing, so W always moves away from the camera. Space makes the player jump.
 - Key: our first example of an interactable object, and also of an item that can be picked up to be held in the inventory. Along with the PickupItem script, it has two different colliders; one is a trigger collider for detecting if the player is close enough to reasonably interact with it, and the other is for actual player interaction.
 - Door: our first example of a 'puzzle', and is also an interactable object with a close-enough range. A door can optionally have a required item to be opened. If the user does not have an item of that particular name, it will not move. It opens/closes instantly when unlocked with a basic rotation transformation, but we plan to later add animations to its movement once we learn.
 
@@ -86,7 +86,11 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 - We have the IInteractable interface so that any interactable object will implement the Interact() function with their own behavior upon being clicked on.
 
-- InventoryManager is the basic storage of items the user can pick up to solve puzzles with. It will likely be fleshed out more in the future.
+- InventoryManager stores the items the player has picked up, as a list of item names. There is only one InventoryManager in the scene (on our GameManager object), and other scripts access it through a static Instance property instead of needing a reference dragged into each one. It provides three methods: AddItem() (called by PickupItem when the player picks something up), HasItem() (used by doors and other locks to check whether the player has the required item), and RemoveItem() (used to consume an item once it unlocks something). The item list is a serialized field, so we can watch it update in the Inspector while testing. It is also exposed as a read-only Items property, which the inventory UI uses to display item names without being able to change them. In the future, we plan to store more than just names, such as an icon and description for each item.
+
+- InventroyUI lets the player see what they are carrying. Pressing Esc switches from play mode to menu mode: the mouse cursor becomes visible, and the camera and click interactions pause so the player can use the UI. Clicking the Inventory button in the top-right corner opens a panel that lists the names of all items currently in the InventoryManager. Other scripts check its static CursorFree property to know whether the player is in menu mode.
+
+- PlayerInteractor handles clicking on objects in the world. It sits on the Main Camera, and when the player left-clicks, it casts a ray from the camera through the center of the screen, where a small crosshair dot is drawn. If the ray hits an object that implements IInteractable, it calls that object's Interact() function. The ray ignores the Player layer so the player's own body doesn't block it.
 
 - PickupItem is the main script for key and any future items that can be put into the inventory, and implements the IInteractable interface. It uses the object's trigger collider to check if the player is close enough (so they can't pick something up from the other end of the room), and if so, its implemented Interact() will put its name into the inventory and delete the object so it disappears and is no longer interactable.
 

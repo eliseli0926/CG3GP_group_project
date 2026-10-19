@@ -6,7 +6,9 @@
 // their inventory, which is consumed on use if it is there. Afterwards, the door
 // is permanently unlocked.
 //
-// Needs a trigger collider (Is Trigger ticked) to detect the player nearby.
+// The player must be within interactRange of the door's pivot (its hinge) to use it.
+// A distance check is used instead of a trigger collider because a trigger on the
+// door would swing away with it when it opens, so the player couldn't close it again.
 // ============================================================================
 
 using System.Collections;
@@ -22,17 +24,30 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     [SerializeField] private float openAngle = 90f;
     [Tooltip("The message to show when the player doesn't have the right item.")]
     [SerializeField] private string lockedMessage = "This door is locked... I don't have the right key.";
+    [Tooltip("How close (in meters) the player must be to the door's pivot to open/close it.")]
+    [SerializeField] private float interactRange = 5f;
 
     // Internal variables used to check if the user can open/close the door
-    private bool playerInRange;
+    private Transform player;
     private bool isOpen;
     private bool isUnlocked;
+
+    private void Start()
+    {
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null) player = playerObject.transform;
+    }
+
+    private bool PlayerInRange()
+    {
+        return player != null && Vector3.Distance(player.position, transform.position) <= interactRange;
+    }
 
     // Will likely later add some animation component once we learn it, but for now the door will instantly open/close.
     // Any door that has no required item name can be opened unconditionally and is treated as an unlocked door.
     public void Interact()
     {
-        if (!playerInRange) return;
+        if (!PlayerInRange()) return;
         // Close the door
         if (isOpen)
         {
@@ -58,15 +73,10 @@ public class DoorInteractable : MonoBehaviour, IInteractable
         MessagePopup.Instance.Show(lockedMessage);
     }
 
-
-    // Trigger events: fire when the player walks into / out of the door's trigger collider.
-    private void OnTriggerEnter(Collider other)
+    // Shows the interact range in the Scene view when the door is selected.
+    private void OnDrawGizmosSelected()
     {
-        if (other.CompareTag("Player")) playerInRange = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player")) playerInRange = false;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, interactRange);
     }
 }

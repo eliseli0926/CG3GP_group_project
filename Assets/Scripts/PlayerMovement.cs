@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionReference jumpAction;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpSpeed = 5f;
 
     [Tooltip("How far down to check for ground: about half the player's height plus a little.")]

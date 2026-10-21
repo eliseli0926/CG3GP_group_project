@@ -80,7 +80,7 @@ Based on project Part 1-2 Feedback, adding:
 
 - **Sight-based enemy detection:** the caretaker has a view distance and view angle, and walls/obstacles block its line of sight. It only chases the player when it can actually see them, and only catches the player when it can see them while touching them, so the player can hide behind obstacles or slip past it from behind.
 - **Lose screen with two options:** when caught, the game freezes and shows a lose screen where the player can either restart the whole game or respawn at the last checkpoint with their progress kept.
-- **Door opening mechanism:** **player can click on the door to open/close it. It opens/closes by rotating around the vertical axis where its hinges are supposed to be.**
+- **Door opening mechanism:** player can click on the door to open/close it. It opens/closes by rotating around the vertical axis where its hinges are supposed to be.
 - **Expanded environment:** textured walls, floor, and ceiling, extra furniture, a hallway outside the first room, and candles with particle-system flames.
 
 ### Project Part 3: Visual Effects

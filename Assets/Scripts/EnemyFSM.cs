@@ -15,8 +15,12 @@ using UnityEngine.AI;
 public class EnemyFSM : MonoBehaviour
 {
     private enum EnemyState { Patrol, ChasePlayer }
+    [Header("(View-only) Enemy State")]
     [SerializeField] private EnemyState currentState;
+    [Header("Enemy AI")]
+    [Tooltip("Set this to the attached Sight script.")]
     [SerializeField] private Sight sightSensor;
+    [Tooltip("Set this to the parent object's NavMeshAgent.")]
     [SerializeField] private NavMeshAgent agent;
 
     void Start()

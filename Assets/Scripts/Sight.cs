@@ -18,7 +18,7 @@ public class Sight : MonoBehaviour
     [Tooltip("The angle the enemy can see to each side from the centerline.")]
     [SerializeField] private float angle;
 
-    [Header("Object detection")]
+    [Header("Object Detection")]
     [Tooltip("Layers that can block the enemy from seeing the target.")]
     [SerializeField] private LayerMask obstacleLayers;
     [Tooltip("Layers for the enemy to view as a target. The target must have a collider.")]

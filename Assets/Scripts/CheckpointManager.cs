@@ -38,8 +38,9 @@ public class CheckpointManager : MonoBehaviour
         currentCheckpoint = checkpoint;
     }
 
-    public Vector3 GetRespawnPosition()
+    // Fetch the checkpoint
+    public Transform GetRespawnPosition()
     {
-        return currentCheckpoint != null ? currentCheckpoint.RespawnPoint.position : defaultSpawnPoint.position;
+        return currentCheckpoint != null ? currentCheckpoint.RespawnPoint : defaultSpawnPoint;
     }
 }

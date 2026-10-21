@@ -1,9 +1,18 @@
+// Elise Li, Sophia Cho
+// ============================================================================
+// GameManager.cs
+// Handles loss conditions for respawning the player and resetting positions
+// ============================================================================
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Settings")]
+    [Tooltip("Set this to the loss panel in the Canvas.")]
     public GameObject losePanel;
     public GameObject player;
     public Transform playerSpawnPoint;
@@ -12,7 +21,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        } else
+        {
+            Debug.Log("Duplicated GameManager.", gameObject);
+        }
         Time.timeScale = 1f;
         if (losePanel != null) losePanel.SetActive(false);
     }
@@ -30,11 +45,23 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        // Move the player back. A CharacterController must be disabled
-        // while teleporting or it snaps the player back.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void RespawnFromCheckpoint()
+    {
+        TeleportPlayer(CheckpointManager.Instance.GetRespawnPosition());
+        ResetEnemy();
+        ResetGameMode();
+    }
+
+    // Move the player back. A CharacterController must be disabled
+    // while teleporting or it snaps the player back.
+    void TeleportPlayer(Transform spawn)
+    {
         CharacterController cc = player.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
-        player.transform.SetPositionAndRotation(playerSpawnPoint.position, playerSpawnPoint.rotation);
+        player.transform.SetPositionAndRotation(spawn.position, spawn.rotation);
         if (cc != null) cc.enabled = true;
 
         Rigidbody rb = player.GetComponent<Rigidbody>();
@@ -43,15 +70,21 @@ public class GameManager : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+    }
 
-        // Send every enemy back to where it started
+    // Send every enemy back to where it started
+    void ResetEnemy()
+    {
         foreach (EnemyTouchPlayer enemy in FindObjectsByType<EnemyTouchPlayer>(FindObjectsSortMode.None))
             enemy.ResetEnemy();
+    }
 
+    void ResetGameMode()
+    {
         losePanel.SetActive(false);
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked; 
-        Cursor.visible = false;            
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         isGameOver = false;
     }
 }

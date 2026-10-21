@@ -62,16 +62,15 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
-- Replace placeholder primitives with 3D models and textured materials for furniture, doors, and puzzle objects.
+- ~~Replace placeholder primitives with 3D models and textured materials for furniture, doors, and puzzle objects~~.
 - Set up dim lighting, shadows, and fog to create the horror atmosphere.
-  - We did not implement this as chapters 3, 4, and 10 did not teach us how to set up lighting and ambient fog. This will be moved to Part 3 as they are more related to visual effects.
-- Add the caretaker enemy: a model that patrols waypoints and chases the player in a straight line when close.
+- ~~Add the caretaker enemy: a model that patrols waypoints and chases the player in a straight line when close.~~
 - Implement 1–2 more re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate).
-- Add room-based checkpoints and respawning when the player is caught.
+- ~~Add room-based checkpoints and respawning when the player is caught.~~
 
 Based on project Part 1-2 Feedback, adding:
 
-- Adjust the trigger colliders for interactable objects so the user can interact with them in a less strict manner
+- ~~Adjust the trigger colliders for interactable objects so the user can interact with them in a less strict manner~~
 - Adjust the jumping gravity to be more realistic
 
 #### Additions
@@ -128,7 +127,9 @@ We created prefabs for key, player, room, and door, plus basic furniture like ta
 
 ### Project Checkpoint 2: 3D Scenes and Models
 
-- Added assets from the [Dark Fantasy Kit \[Lite\]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925) for building and furniture models
+- Added assets from the [Dark Fantasy Kit \[Lite\]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925) for building and furniture models + textures
+- Implemented the caretaker enemy's patrolling system and AI for chasing the player
+- Implemented game management to handle when the player loses (caretaker too close) and wants to restart entirely or from the most recent checkpoint
 - TODO: add functionality details and cite any other added assets
 
 ## Instructions for Testing the Project
@@ -142,4 +143,4 @@ We created prefabs for key, player, room, and door, plus basic furniture like ta
   - Doors (may be locked, and require a kind of key)
   - Keys (can be picked up and checked in the inventory, consumed upon interacting with the door that requires it)
 - Mechanics:
-  - If the caretaker enemy sees you, you should put an obstacle between you and the caretaker (e.g. closing a door to break line of sight) or else you will die and return to the previous checkpoint
+  - If the caretaker enemy sees you, you should put an obstacle between you and the caretaker (e.g. closing a door to break line of sight) or if you are too close, else you will die and return to the previous checkpoint

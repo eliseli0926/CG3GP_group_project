@@ -62,10 +62,13 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
-- ~~Replace placeholder primitives with 3D models and textured materials for furniture, doors, and puzzle objects~~.
+- ~~Replace placeholder primitives with 3D models and textured materials for furniture, doors, and puzzle objects.~~
 - Set up dim lighting, shadows, and fog to create the horror atmosphere.
+  - _Partially completed:_ we added candle models with flame particles and placed them around the first room, but we have not yet done a full lighting pass or added fog. Since lighting and post-processing are covered in textbook Chapters 12 and 13, we moved the full atmosphere pass to Project Part 3 so we can do it properly with those techniques (baked lighting, fog, post-processing).
 - ~~Add the caretaker enemy: a model that patrols waypoints and chases the player in a straight line when close.~~
+  - _Note:_ instead of a straight line, the caretaker chases the player along the NavMesh, so it can follow the player around corners and through doorways without getting stuck on walls.
 - Implement 1–2 more re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate).
+  - _Not completed:_ this submission focused on building out the enemy AI, the lose/respawn system, and the textured environment, since the hallway and caretaker needed to exist before we could place new puzzles outside the first room. The cabinet-key-door chain in the first room still demonstrates the collect-and-use mechanic. We moved the new puzzle re-skins to Project Part 3, where they will also benefit from the visual effects (e.g. sparks on the fuse box).
 - ~~Add room-based checkpoints and respawning when the player is caught.~~
 
 Based on project Part 1-2 Feedback, adding:
@@ -75,11 +78,34 @@ Based on project Part 1-2 Feedback, adding:
 
 #### Additions
 
-- None yet.
+- **Sight-based enemy detection:** the caretaker has a view distance and view angle, and walls/obstacles block its line of sight. It only chases the player when it can actually see them, and only catches the player when it can see them while touching them, so the player can hide behind obstacles or slip past it from behind.
+- **Lose screen with two options:** when caught, the game freezes and shows a lose screen where the player can either restart the whole game or respawn at the last checkpoint with their progress kept.
+- **Door opening mechanism:** **player can click on the door to open/close it. It opens/closes by rotating around the vertical axis where its hinges are supposed to be.**
+- **Expanded environment:** textured walls, floor, and ceiling, extra furniture, a hallway outside the first room, and candles with particle-system flames.
 
 ### Project Part 3: Visual Effects
 
-- TODO: Fill in with plans for textbook chapters 11-13
+**Particle Systems and VFX Graph (Ch 11)**
+ 
+- Add ambient dust particles floating in the rooms and a low ground-fog particle effect in the hallway.
+- Add spark particles to the fuse box puzzle and a small burst effect when a locked object is unlocked, so the player gets visual feedback.
+
+**Lighting with URP (Ch 12)**
+  
+- Do the full horror lighting pass carried over from Part 2: dim ambient light, warm point lights on the candles, and darker hallways so the caretaker is harder to spot.
+- Bake lighting for static furniture and walls (with light probes for the player and caretaker) to get softer shadows with better performance.
+- Add scene fog through the Lighting settings.
+
+**Fullscreen Post-processing (Ch 13)**
+ 
+- Add a Global Volume with bloom (so candle flames glow), a vignette, film grain, and color adjustments for a cold, desaturated look.
+- Make the vignette tighten and/or add a red tint while the caretaker is chasing the player, to build tension.
+
+
+**Carried over from Part 2**
+ 
+- 1–2 re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate) placed outside the first room.
+- More checkpoints as new rooms are added.
 
 ## Development
 
@@ -125,22 +151,78 @@ We created prefabs for key, player, room, and door, plus basic furniture like ta
 - Current basic appearance of the first room. There is a door to leave the room which is locked; the key is in a locked shelf/cabinet, and that key can be found on the floor next to the NPC.
   <img width="506" height="284" alt="image" src="https://github.com/user-attachments/assets/f4d643cf-49ef-4747-bc95-45b0f01cf2f3" />
 
-### Project Checkpoint 2: 3D Scenes and Models
+### Project Part 2: 3D Scenes and Models
 
-- Added assets from the [Dark Fantasy Kit \[Lite\]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925) for building and furniture models + textures
-- Implemented the caretaker enemy's patrolling system and AI for chasing the player
-- Implemented game management to handle when the player loses (caretaker too close) and wants to restart entirely or from the most recent checkpoint
-- TODO: add functionality details and cite any other added assets
+- Replaced the placeholder primitives in the first room with 3D models and textured materials from the Dark Fantasy Kit [Lite]. The walls, floor, and ceiling now use the kit's textures, and we added more furniture to make the room feel lived-in.
+- Built a hallway outside the first room for the caretaker to patrol.
+- Added candles with particle-system flames around the room for a dim, candlelit look.
+- All materials use the URP Lit shader.
+
+**Caretaker Enemy**
+ 
+The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase Player**.
+ 
+- While patrolling, it walks between waypoints placed along the hallway (currently two), pausing for a few seconds at each one before moving on.
+- It has a sight sensor with a view distance and view angle. Walls and other obstacles block its line of sight, so it can't see the player through walls.
+- When it sees the player, it switches to chasing and speeds up, following the player along the NavMesh. If it loses sight of the player, it returns to its patrol route.
+- If the caretaker touches the player while it can see them, the player is caught.
+
+**Lose Screen and Checkpoints**
+ 
+- When the player is caught, the game freezes and a lose screen appears with two buttons:
+  - **Restart:** reloads the whole scene, so all progress is lost (keys are back in their original spots and the first room's door is locked again).
+  - **Back to Checkpoint:** keeps all progress (inventory, unlocked doors and cabinets) and only respawns the player at the checkpoint in the first room. The caretaker is also sent back to its starting point so the player isn't caught again immediately.
+- Right now there is one checkpoint, in the first room. More will be added as we add rooms.
+
+
+**Door Interaction**
+ 
+- In Checkpoint 1-2, a door's "close enough" range was a trigger collider on the door. Once the door opened, that trigger rotated with it, so the player often couldn't close the door again. Doors now measure the player's distance to the door's pivot (its hinge), which doesn't move when the door swings. The range is adjustable per door and shown as a yellow sphere in the Scene view.
+- Doors still open and close instantly with a rotation. We plan to add a proper opening animation later.
+
+
+**Scripts**
+ 
+- **EnemyFSM** is the caretaker's finite state machine, with Patrol and ChasePlayer states. In Patrol, it moves the NavMeshAgent through an array of patrol point Transforms in order and loops back to the first, waiting a set time at each point. In ChasePlayer, it sets the agent's destination to the player's position every frame. Patrol and chase speeds are set separately in the Inspector. 
+
+- **Sight** is the caretaker's vision sensor. Every frame, it finds colliders on the target layers within its view distance, checks whether each one is inside its view angle, and then does a linecast to make sure no obstacle is in the way. The first object that passes all three checks is stored as the detected object, which EnemyFSM uses to decide whether to chase.
+
+- **EnemyTouchPlayer** sits on the caretaker's root object, which has a trigger collider and a kinematic Rigidbody. While the player is inside the trigger and the caretaker's Sight sensor can see them, it tells the GameManager that the player lost. It also stores the caretaker's starting position and rotation so the caretaker can be warped back there when the player respawns.
+
+- **GameManager** handles the loss condition and both ways of continuing. It is a single scene-wide manager accessed through a static Instance property, and it logs a warning if a duplicate is found.
+  - Lose() shows the lose panel, pauses the game by setting the time scale to 0, and frees the mouse cursor. A flag makes sure it only runs once per loss, so the player can't be caught multiple times.
+  - Respawn() (the Restart button) reloads the whole scene, which resets all progress.
+  - RespawnFromCheckpoint() (the Back to Checkpoint button) gets the active checkpoint's respawn point from the CheckpointManager, teleports the player there, sends every caretaker back to its start, hides the lose panel, and unpauses the game. The inventory and anything already unlocked stay as they are.
+
+- **Checkpoint** goes on a trigger collider in each room. When the player enters it, it registers itself as the active checkpoint with the CheckpointManager. Each checkpoint can optionally use a child object as a custom respawn point. Otherwise, the player respawns at the checkpoint's own position.
+
+**Demonstration**
+<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 07" src="https://github.com/user-attachments/assets/9a059e28-7ff7-406a-ae62-8bf3ed0406af" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 54" src="https://github.com/user-attachments/assets/e080018e-4140-46a5-a526-ff578b82d26b" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 43" src="https://github.com/user-attachments/assets/0a5ec16c-661c-4147-b56f-7e287e4b1918" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 26" src="https://github.com/user-attachments/assets/94aa1df2-6565-4d32-8a66-33a553c15c98" />
 
 ## Instructions for Testing the Project
-
-- Player actions:
+ 
+- **Player controls:**
   - WASD for horizontal movement
   - Space to jump
-  - Align crosshair dot with interactable object and click to interact
-  - Esc + click on Inventory button in the top right to access inventory, click outside the gray UI to exit inventory
-- Current interactables:
-  - Doors (may be locked, and require a kind of key)
-  - Keys (can be picked up and checked in the inventory, consumed upon interacting with the door that requires it)
-- Mechanics:
-  - If the caretaker enemy sees you, you should put an obstacle between you and the caretaker (e.g. closing a door to break line of sight) or if you are too close, else you will die and return to the previous checkpoint
+  - Move the mouse to orbit the camera around the player
+  - Align the crosshair dot with an interactable object and left-click to interact
+  - Esc, then click the Inventory button in the top right to see your inventory. Click outside the gray UI to close it.
+- **Current interactables:**
+  - Keys (picked up into the inventory)
+  - Cabinets/lockers (may be locked and require a key)
+  - Doors (may be locked and require a key)
+- **Walkthrough of the first room:**
+  1. Pick up the key on the floor next to the dummy sitting in the corner.
+  2. Of the two lockers (cabinets with shelves), open the **left** one with that key. Clicking it without the key shows a "locked" popup.
+  3. Pick up the second key inside the locker.
+  4. Use the second key to open the room's door.
+- **Testing the caretaker:**
+  - Step into the hallway. The caretaker patrols between two points, pausing at each.
+  - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
+  - Let it touch you while it can see you to bring up the lose screen.
+- **Testing the lose screen:**
+  - **Back to Checkpoint:** you respawn in the first room with your keys and unlocked doors kept, and the caretaker goes back to its starting point.
+  - **Restart:** the whole game resets. Keys are back in their original spots and the doors are locked again.

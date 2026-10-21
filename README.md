@@ -198,9 +198,9 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 **Demonstration**
 <img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 07" src="https://github.com/user-attachments/assets/9a059e28-7ff7-406a-ae62-8bf3ed0406af" />
-<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 54" src="https://github.com/user-attachments/assets/e080018e-4140-46a5-a526-ff578b82d26b" />
-<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 43" src="https://github.com/user-attachments/assets/0a5ec16c-661c-4147-b56f-7e287e4b1918" />
 <img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 26" src="https://github.com/user-attachments/assets/94aa1df2-6565-4d32-8a66-33a553c15c98" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 43" src="https://github.com/user-attachments/assets/0a5ec16c-661c-4147-b56f-7e287e4b1918" />
+<img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 54" src="https://github.com/user-attachments/assets/e080018e-4140-46a5-a526-ff578b82d26b" />
 
 ## Instructions for Testing the Project
  

@@ -70,6 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItemName: Key
   openAngle: 90
+  lockedMessage: This door is locked... I don't have the right key.
+  interactRange: 5
 --- !u!1 &2834175428654547913
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 08f42fbfe6bb3d4449245131e3347c71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -243,7 +245,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 25851f0d2747d9f43a7df94ea7383dfa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

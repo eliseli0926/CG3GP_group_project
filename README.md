@@ -202,6 +202,9 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 <img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 43" src="https://github.com/user-attachments/assets/0a5ec16c-661c-4147-b56f-7e287e4b1918" />
 <img width="1680" height="1050" alt="Screenshot 2026-10-21 at 09 30 54" src="https://github.com/user-attachments/assets/e080018e-4140-46a5-a526-ff578b82d26b" />
 
+**Assets Used**
+- [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
+
 ## Instructions for Testing the Project
  
 - **Player controls:**

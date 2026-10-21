@@ -40,13 +40,14 @@ public class Sight : MonoBehaviour
 
             if (angleToCollider < angle)
             {
-                if (!Physics.Linecast(transform.position, collider.bounds.center, out RaycastHit hit, obstacleLayers))
+                if (!Physics.Linecast(transform.position, collider.bounds.center, out RaycastHit hit, obstacleLayers, QueryTriggerInteraction.Ignore) || hit.collider.transform.root == collider.transform.root)
                 {
                     Debug.DrawLine(transform.position, collider.bounds.center, Color.green);
                     detectedObject = collider;
                     break;
                 } else
                 {
+                    Debug.Log($"Blocked by {hit.collider.name} (layer: {LayerMask.LayerToName(hit.collider.gameObject.layer)})", hit.collider);
                     Debug.DrawLine(transform.position, hit.point, Color.red);
                 }
             }

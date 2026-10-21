@@ -80,30 +80,29 @@ Based on project Part 1-2 Feedback, adding:
 
 - **Sight-based enemy detection:** the caretaker has a view distance and view angle, and walls/obstacles block its line of sight. It only chases the player when it can actually see them, and only catches the player when it can see them while touching them, so the player can hide behind obstacles or slip past it from behind.
 - **Lose screen with two options:** when caught, the game freezes and shows a lose screen where the player can either restart the whole game or respawn at the last checkpoint with their progress kept.
-- **Door opening mechanism:** player can click on the door to open/close it. It opens/closes by rotating around the vertical axis where its hinges are supposed to be.
+- **Door opening mechanism adjustment:** player can click on the door to open/close it. It opens/closes by rotating around the vertical axis where its hinges are supposed to be.
 - **Expanded environment:** textured walls, floor, and ceiling, extra furniture, a hallway outside the first room, and candles with particle-system flames.
 
 ### Project Part 3: Visual Effects
 
 **Particle Systems and VFX Graph (Ch 11)**
- 
+
 - Add ambient dust particles floating in the rooms and a low ground-fog particle effect in the hallway.
 - Add spark particles to the fuse box puzzle and a small burst effect when a locked object is unlocked, so the player gets visual feedback.
 
 **Lighting with URP (Ch 12)**
-  
+
 - Do the full horror lighting pass carried over from Part 2: dim ambient light, warm point lights on the candles, and darker hallways so the caretaker is harder to spot.
 - Bake lighting for static furniture and walls (with light probes for the player and caretaker) to get softer shadows with better performance.
 - Add scene fog through the Lighting settings.
 
 **Fullscreen Post-processing (Ch 13)**
- 
+
 - Add a Global Volume with bloom (so candle flames glow), a vignette, film grain, and color adjustments for a cold, desaturated look.
 - Make the vignette tighten and/or add a red tint while the caretaker is chasing the player, to build tension.
 
-
 **Carried over from Part 2**
- 
+
 - 1–2 re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate) placed outside the first room.
 - More checkpoints as new rooms are added.
 
@@ -159,31 +158,29 @@ We created prefabs for key, player, room, and door, plus basic furniture like ta
 - All materials use the URP Lit shader.
 
 **Caretaker Enemy**
- 
+
 The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase Player**.
- 
+
 - While patrolling, it walks between waypoints placed along the hallway (currently two), pausing for a few seconds at each one before moving on.
 - It has a sight sensor with a view distance and view angle. Walls and other obstacles block its line of sight, so it can't see the player through walls.
 - When it sees the player, it switches to chasing and speeds up, following the player along the NavMesh. If it loses sight of the player, it returns to its patrol route.
 - If the caretaker touches the player while it can see them, the player is caught.
 
 **Lose Screen and Checkpoints**
- 
+
 - When the player is caught, the game freezes and a lose screen appears with two buttons:
   - **Restart:** reloads the whole scene, so all progress is lost (keys are back in their original spots and the first room's door is locked again).
   - **Back to Checkpoint:** keeps all progress (inventory, unlocked doors and cabinets) and only respawns the player at the checkpoint in the first room. The caretaker is also sent back to its starting point so the player isn't caught again immediately.
 - Right now there is one checkpoint, in the first room. More will be added as we add rooms.
 
-
 **Door Interaction**
- 
+
 - In Checkpoint 1-2, a door's "close enough" range was a trigger collider on the door. Once the door opened, that trigger rotated with it, so the player often couldn't close the door again. Doors now measure the player's distance to the door's pivot (its hinge), which doesn't move when the door swings. The range is adjustable per door and shown as a yellow sphere in the Scene view.
 - Doors still open and close instantly with a rotation. We plan to add a proper opening animation later.
 
-
 **Scripts**
- 
-- **EnemyFSM** is the caretaker's finite state machine, with Patrol and ChasePlayer states. In Patrol, it moves the NavMeshAgent through an array of patrol point Transforms in order and loops back to the first, waiting a set time at each point. In ChasePlayer, it sets the agent's destination to the player's position every frame. Patrol and chase speeds are set separately in the Inspector. 
+
+- **EnemyFSM** is the caretaker's finite state machine, with Patrol and ChasePlayer states. In Patrol, it moves the NavMeshAgent through an array of patrol point Transforms in order and loops back to the first, waiting a set time at each point. In ChasePlayer, it sets the agent's destination to the player's position every frame. Patrol and chase speeds are set separately in the Inspector.
 
 - **Sight** is the caretaker's vision sensor. Every frame, it finds colliders on the target layers within its view distance, checks whether each one is inside its view angle, and then does a linecast to make sure no obstacle is in the way. The first object that passes all three checks is stored as the detected object, which EnemyFSM uses to decide whether to chase.
 
@@ -204,10 +201,12 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 <img width="700" alt="Screenshot 2026-10-21 at 09 30 54" src="https://github.com/user-attachments/assets/e080018e-4140-46a5-a526-ff578b82d26b" />
 
 **Assets Used**
+
 - [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
+- [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): to replace the caretaker primitive model with
 
 ## Instructions for Testing the Project
- 
+
 - **Player controls:**
   - WASD for horizontal movement
   - Space to jump

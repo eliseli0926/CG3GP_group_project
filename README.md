@@ -71,7 +71,7 @@ Little Nightmares is a horror puzzle game played in a 2.5D fixed camera side scr
 Based on project Part 1-2 Feedback, adding:
 
 - ~~Adjust the trigger colliders for interactable objects so the user can interact with them in a less strict manner~~
-- Adjust the jumping gravity to be more realistic
+- ~~Adjust the jumping gravity to be more realistic~~
 
 #### Additions
 

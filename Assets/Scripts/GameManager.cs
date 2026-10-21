@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
+        // Later, animations for the enemy catching the player will be displayed before the lose panel shows up
+
         losePanel.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

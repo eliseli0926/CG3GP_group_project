@@ -4108,6 +4108,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 813691689610770863, guid: e33b121c493c3c5459634ff95bb1052d,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1426758187469758028, guid: e33b121c493c3c5459634ff95bb1052d,
         type: 3}
       propertyPath: m_LocalScale.y

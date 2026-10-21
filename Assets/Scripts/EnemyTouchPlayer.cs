@@ -26,7 +26,7 @@ public class EnemyTouchPlayer : MonoBehaviour
         fsm = GetComponentInChildren<EnemyFSM>();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && sightSensor.detectedObject != null)
             GameManager.Instance.Lose();

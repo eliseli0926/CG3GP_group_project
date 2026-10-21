@@ -72,4 +72,10 @@ public class EnemyFSM : MonoBehaviour
         directionToPosition.y = 0;
         transform.parent.forward = directionToPosition;
     }
+
+        public void ResetState()
+    {
+        currentState = EnemyState.Patrol;
+        if (agent != null && agent.isOnNavMesh) agent.ResetPath();
+    }
 }

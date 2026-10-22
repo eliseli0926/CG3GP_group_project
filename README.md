@@ -154,6 +154,7 @@ We created prefabs for key, player, room, and door, plus basic furniture like ta
 
 - Replaced the placeholder primitives in the first room with 3D models and textured materials from the Dark Fantasy Kit [Lite]. The walls, floor, and ceiling now use the kit's textures, and we added more furniture to make the room feel lived-in.
 - Replaced the placeholder primitive model for the caretaker with an imported asset (the Priest).
+- Replaced the placeholder primitive model for the NPC with an imported asset (Distant Lands Free Characters).
 - Built a hallway outside the first room for the caretaker to patrol.
 - Added candles with particle-system flames around the room for a dim, candlelit look.
 - All materials use the URP Lit shader.
@@ -205,6 +206,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 - [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
 - [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): used for the caretaker to replace its original primitive model
+- [Distant Lands Free Characters](https://assetstore.unity.com/packages/3d/characters/distant-lands-free-characters-178123): an example of what may replace NPCs or the player model; it has replaced the one non-hostile NPC that currently exists, but we haven't decided on the player's appearance yet.
 
 ## Instructions for Testing the Project
 

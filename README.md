@@ -197,10 +197,10 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 **Demonstration**
 
-<img width="611" height="386" alt="Screenshot 2026-10-21 205447" src="https://github.com/user-attachments/assets/28a54765-2629-45bf-9962-b35385afc510" />
-<img width="614" height="392" alt="Screenshot 2026-10-21 205508" src="https://github.com/user-attachments/assets/be42bbc5-c5ff-44e1-b651-a0f5fdeb06dd" />
-<img width="614" height="386" alt="Screenshot 2026-10-21 205536" src="https://github.com/user-attachments/assets/9ca41468-0418-4c5a-bc2b-54268d99da56" />
-<img width="615" height="389" alt="Screenshot 2026-10-21 205559" src="https://github.com/user-attachments/assets/d72f7794-0d19-4cd0-ae05-e8c8a4afdced" />
+<img width="619" height="385" alt="room" src="https://github.com/user-attachments/assets/2173561a-f0fc-4e92-b640-f956ff9396a8" />
+<img width="614" height="392" alt="fetch key" src="https://github.com/user-attachments/assets/be42bbc5-c5ff-44e1-b651-a0f5fdeb06dd" />
+<img width="614" height="386" alt="view of enemy" src="https://github.com/user-attachments/assets/9ca41468-0418-4c5a-bc2b-54268d99da56" />
+<img width="615" height="389" alt="loss screen" src="https://github.com/user-attachments/assets/d72f7794-0d19-4cd0-ae05-e8c8a4afdced" />
 
 **Assets Used**
 

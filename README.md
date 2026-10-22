@@ -171,8 +171,8 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 - When the player is caught, the game freezes and a lose screen appears with two buttons:
   - **Restart:** reloads the whole scene, so all progress is lost (keys are back in their original spots and the first room's door is locked again).
-  - **Back to Checkpoint:** keeps all progress (inventory, unlocked doors and cabinets) and only respawns the player at the checkpoint in the first room. The caretaker is also sent back to its starting point so the player isn't caught again immediately.
-- Right now there is one checkpoint, in the first room. More will be added as we add rooms.
+  - **Back to Checkpoint:** keeps all progress (inventory, unlocked doors and cabinets) and only respawns the player at the checkpoint in the last room they were in. The caretaker is also sent back to its starting point so the player isn't caught again immediately.
+- Right now there are two checkpoints, one per room. More will be added as we add rooms.
 
 **Door Interaction**
 
@@ -228,5 +228,5 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
   - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
   - Let it touch you while it can see you to bring up the lose screen.
 - **Testing the lose screen:**
-  - **Back to Checkpoint:** you respawn in the first room with your keys and unlocked doors kept, and the caretaker goes back to its starting point.
+  - **Back to Checkpoint:** you respawn in the last room you were in with your keys and unlocked doors kept, and the caretaker goes back to its starting point.
   - **Restart:** the whole game resets. Keys are back in their original spots and the doors are locked again.

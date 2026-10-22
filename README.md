@@ -153,6 +153,7 @@ We created prefabs for key, player, room, and door, plus basic furniture like ta
 ### Project Part 2: 3D Scenes and Models
 
 - Replaced the placeholder primitives in the first room with 3D models and textured materials from the Dark Fantasy Kit [Lite]. The walls, floor, and ceiling now use the kit's textures, and we added more furniture to make the room feel lived-in.
+- Replaced the placeholder primitive model for the caretaker with an imported asset (the Priest).
 - Built a hallway outside the first room for the caretaker to patrol.
 - Added candles with particle-system flames around the room for a dim, candlelit look.
 - All materials use the URP Lit shader.
@@ -203,7 +204,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 **Assets Used**
 
 - [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
-- [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): to replace the caretaker primitive model with
+- [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): used for the caretaker to replace its original primitive model
 
 ## Instructions for Testing the Project
 

@@ -105,6 +105,7 @@ Based on project Part 1-2 Feedback, adding:
 
 - 1–2 re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate) placed outside the first room.
 - More checkpoints as new rooms are added.
+- Replace the player model and non-hostile NPCs with assets
 
 ## Development
 
@@ -197,10 +198,10 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 **Demonstration**
 
-<img width="700" alt="Screenshot 2026-10-21 at 09 30 07" src="https://github.com/user-attachments/assets/9a059e28-7ff7-406a-ae62-8bf3ed0406af" />
-<img width="700" alt="Screenshot 2026-10-21 at 09 30 26" src="https://github.com/user-attachments/assets/94aa1df2-6565-4d32-8a66-33a553c15c98" />
-<img width="700" alt="Screenshot 2026-10-21 at 09 30 43" src="https://github.com/user-attachments/assets/0a5ec16c-661c-4147-b56f-7e287e4b1918" />
-<img width="700" alt="Screenshot 2026-10-21 at 09 30 54" src="https://github.com/user-attachments/assets/e080018e-4140-46a5-a526-ff578b82d26b" />
+<img width="619" height="385" alt="room" src="https://github.com/user-attachments/assets/2173561a-f0fc-4e92-b640-f956ff9396a8" />
+<img width="614" height="392" alt="fetch key" src="https://github.com/user-attachments/assets/be42bbc5-c5ff-44e1-b651-a0f5fdeb06dd" />
+<img width="614" height="386" alt="view of enemy" src="https://github.com/user-attachments/assets/9ca41468-0418-4c5a-bc2b-54268d99da56" />
+<img width="615" height="389" alt="loss screen" src="https://github.com/user-attachments/assets/d72f7794-0d19-4cd0-ae05-e8c8a4afdced" />
 
 **Assets Used**
 

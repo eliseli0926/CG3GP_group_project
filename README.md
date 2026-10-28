@@ -107,6 +107,28 @@ Based on project Part 1-2 Feedback, adding:
 - More checkpoints as new rooms are added.
 - Replace the player model and non-hostile NPCs with assets
 
+#### Additions
+
+- TODO: Fill this in.
+- Adjust the inventory to be accessed with the I key instead of making the player esc + click on the inventory button
+
+### Project Checkpoint 3-4: Sound, UI, and Animation
+
+**Audio and Music (Ch 14)**
+
+- Add sound effects for certain interactions (ex: for picking up an item, opening/closing a door, walking, caretaker catching the player, etc.)
+- Add background audio/music which changes when the caretaker starts to chase you
+
+**User-Friendly UI (Ch 15)**
+
+- Update our existing basic UI for inventory, popup boxes, and death screen
+- Add dialogue boxes for NPC interactions and note-reading
+
+**Animations (Ch 17)**
+
+- Animate the player model
+- Animate caretaker enemy's movement
+
 ## Development
 
 ### Project Checkpoint 1-2
@@ -208,6 +230,15 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 - [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
 - [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): used for the caretaker to replace its original primitive model
 - [Distant Lands Free Characters](https://assetstore.unity.com/packages/3d/characters/distant-lands-free-characters-178123): an example of what may replace NPCs or the player model; it has replaced the one non-hostile NPC that currently exists, but we haven't decided on the player's appearance yet.
+
+### Project Part 3: Visual Effects
+
+TODO: Fill this in
+
+**Assets Used**
+
+- Same assets from project part 2
+- [AllSky Free - 10 Sky / Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014) Added a skybox/cubemap, which may be visible if we decide to add windows to rooms/hallways or if we want an ending cutscene of the player's escape
 
 ## Instructions for Testing the Project
 

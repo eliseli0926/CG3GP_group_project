@@ -220,7 +220,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 **Demonstration**
 
-<img width="619" height="385" alt="room" src="https://github.com/user-attachments/assets/2173561a-f0fc-4e92-b640-f956ff9396a8" />
+<img width="520" height="324" alt="room 1 replaced primitives" src="https://github.com/user-attachments/assets/6cb54bee-c7c2-4d8d-b6c2-f9d29fdedd60" />
 <img width="614" height="392" alt="fetch key" src="https://github.com/user-attachments/assets/be42bbc5-c5ff-44e1-b651-a0f5fdeb06dd" />
 <img width="614" height="386" alt="view of enemy" src="https://github.com/user-attachments/assets/9ca41468-0418-4c5a-bc2b-54268d99da56" />
 <img width="615" height="389" alt="loss screen" src="https://github.com/user-attachments/assets/d72f7794-0d19-4cd0-ae05-e8c8a4afdced" />

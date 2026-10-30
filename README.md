@@ -92,7 +92,7 @@ Based on project Part 1-2 Feedback, adding:
 
 **Lighting with URP (Ch 12)**
 
-- Do the full horror lighting pass carried over from Part 2: dim ambient light, warm point lights on the candles, and darker hallways so the caretaker is harder to spot.
+- Do the full horror lighting pass carried over from Part 2: dim ambient light, ~~warm point lights on the candles~~, and darker hallways so the caretaker is harder to spot.
 - Bake lighting for static furniture and walls (with light probes for the player and caretaker) to get softer shadows with better performance.
 - Add scene fog through the Lighting settings.
 

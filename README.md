@@ -84,12 +84,13 @@ Based on project Part 1-2 Feedback, adding:
 - **Expanded environment:** textured walls, floor, and ceiling, extra furniture, a hallway outside the first room, and candles with particle-system flames.
 
 ### Project Part 3: Visual Effects
-**Instructor feedback
+
+\*\*Instructor feedback
 
 - Story is going to drive the gameplay → keep adding notes and story elements (notes, clues about the story, etc)
 - Try different combinations to make new levels (Levels in hallways, hiding in cabinets, etc.)
 - Clues from NPCs can be simpler → Notes
-- Have a keybind for the inventory system (Ex: pressing “i” should pop up the inventory window)
+- ~~Have a keybind for the inventory system (Ex: pressing “i” should pop up the inventory window)~~
 - On player death, freeze the controller
 - give player feedback to note they've been spotted by enemy and are being chased (e.g. enemy or UI screen flash.)
 
@@ -241,12 +242,16 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 ### Project Part 3: Visual Effects
 
-TODO: Fill this in
+- Added point lights to the Dark Fantasy Kit [Lite] candle prefabs
+- Replaced the player primitive model with imported asset
+- Implemented player walking and jumping animation by importing animations from Mixamo
 
 **Assets Used**
 
 - Same assets from project part 2
 - [AllSky Free - 10 Sky / Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014) Added a skybox/cubemap, which may be visible if we decide to add windows to rooms/hallways or if we want an ending cutscene of the player's escape
+- [Books Essentials](https://assetstore.unity.com/packages/3d/props/books-essentials-362582) Added page assets for notes
+- [Mixamo](https://www.mixamo.com/) - character movement animations
 
 ## Instructions for Testing the Project
 

@@ -25,13 +25,6 @@ public class MainMenu : MonoBehaviour
         // visible here so the player can click the button.
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        instructionsText.text =
-            "W A S D  -  Move\n" +
-            "Space  -  Jump\n" +
-            "Mouse  -  Look around\n" +
-            "Left Click  -  Interact / pick up\n" +
-            "I  -  Open / close inventory";
     }
 
     // Hooked up to the Start button's On Click.

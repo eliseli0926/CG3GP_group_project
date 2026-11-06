@@ -576,10 +576,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'WSAD - player movement
 
-    space bar - player jump
+    space - player jump
 
-    left mouse click
-    - interact
+    click - interact
+
+    mouse
+    - look around
 
     I - open/close inventory'
   m_isRightToLeft: 0

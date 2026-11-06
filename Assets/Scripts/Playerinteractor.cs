@@ -34,7 +34,6 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        if (InventoryUI.CursorFree) return;   // clicks are for the UI right now, not the world
         if (!interactAction.action.WasPressedThisFrame()) return;
 
         // (0.5, 0.5) is the exact center of the screen, where the crosshair is.
@@ -43,9 +42,15 @@ public class PlayerInteractor : MonoBehaviour
         // Ignore trigger colliders so the ray hits the object itself, not its "nearby" zone.
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactLayers, QueryTriggerInteraction.Ignore))
         {
+            Debug.Log("Ray hit: " + hit.collider.name);
             // GetComponentInParent also works if the collider is on a child of the object.
             IInteractable target = hit.collider.GetComponentInParent<IInteractable>();
             target?.Interact();
         }
+        else
+        {
+            Debug.Log("Ray hit nothing");   // TEMP
+        }
+
     }
 }

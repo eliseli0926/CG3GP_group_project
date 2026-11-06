@@ -84,6 +84,14 @@ Based on project Part 1-2 Feedback, adding:
 - **Expanded environment:** textured walls, floor, and ceiling, extra furniture, a hallway outside the first room, and candles with particle-system flames.
 
 ### Project Part 3: Visual Effects
+**Instructor feedback
+
+- Story is going to drive the gameplay → keep adding notes and story elements (notes, clues about the story, etc)
+- Try different combinations to make new levels (Levels in hallways, hiding in cabinets, etc.)
+- Clues from NPCs can be simpler → Notes
+- Have a keybind for the inventory system (Ex: pressing “i” should pop up the inventory window)
+- On player death, freeze the controller
+- give player feedback to note they've been spotted by enemy and are being chased (e.g. enemy or UI screen flash.)
 
 **Particle Systems and VFX Graph (Ch 11)**
 

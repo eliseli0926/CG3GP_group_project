@@ -42,9 +42,15 @@ public class PlayerInteractor : MonoBehaviour
         // Ignore trigger colliders so the ray hits the object itself, not its "nearby" zone.
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactLayers, QueryTriggerInteraction.Ignore))
         {
+            Debug.Log("Ray hit: " + hit.collider.name);
             // GetComponentInParent also works if the collider is on a child of the object.
             IInteractable target = hit.collider.GetComponentInParent<IInteractable>();
             target?.Interact();
         }
+        else
+        {
+            Debug.Log("Ray hit nothing");   // TEMP
+        }
+
     }
 }

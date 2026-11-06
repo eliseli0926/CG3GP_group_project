@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   losePanel: {fileID: 1687636219}
-  player: {fileID: 0}
+  player: {fileID: 1673210354}
   playerSpawnPoint: {fileID: 2140926793}
 --- !u!4 &206570987
 Transform:
@@ -4344,6 +4344,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6747997930862398541, guid: 96d98df100c25db4598807162b10c097,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2b84f97a6b5474e9d96d9b9a27e55f8c, type: 2}
+    - target: {fileID: 6747997930862398541, guid: 96d98df100c25db4598807162b10c097,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6854702145005453075, guid: 96d98df100c25db4598807162b10c097,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4367,7 +4377,7 @@ PrefabInstance:
     - target: {fileID: 6854702145005453075, guid: 96d98df100c25db4598807162b10c097,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.611
+      value: 0.639
       objectReference: {fileID: 0}
     - target: {fileID: 6854702145005453075, guid: 96d98df100c25db4598807162b10c097,
         type: 3}
@@ -4948,16 +4958,13 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   target: {fileID: 1747394150}
-  pivotOffset: {x: 0, y: 2.8, z: 0}
+  pivotOffset: {x: 0, y: 2.5, z: 0}
   lookAction: {fileID: -362785334659116015, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
     type: 3}
   mouseSensitivity: 0.15
-  distance: 2.2
+  distance: 1.4
   minPitch: -30
   maxPitch: 60
-  bobAmplitude: 0.05
-  bobFrequency: 10
-  bobFadeSpeed: 4
 --- !u!114 &1699977496
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,12 +23,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody body;
     private Transform cam;
+    private Animator animator;
 
     private void Start()
     {
         body = GetComponent<Rigidbody>();
         body.freezeRotation = true;   // stop physics from tipping the player over
         cam = Camera.main.transform;
+
+        animator = GetComponentInChildren<Animator>();
 
         moveAction.action.Enable();
         jumpAction.action.Enable();
@@ -50,9 +53,12 @@ public class PlayerMovement : MonoBehaviour
         // Face the direction we're walking.
         if (move != Vector3.zero) transform.forward = move;
 
+        if (animator != null) animator.SetFloat("Speed", move.magnitude);
+
         if (jumpAction.action.WasPressedThisFrame() && IsGrounded())
         {
             body.AddForce(Vector3.up * jumpSpeed, ForceMode.VelocityChange);
+            if (animator != null) animator.SetTrigger("Jump");
         }
     }
 

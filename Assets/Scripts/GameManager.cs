@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Transform playerSpawnPoint;
 
     private bool isGameOver;
+    public bool IsGameOver => isGameOver;
 
     void Awake()
     {

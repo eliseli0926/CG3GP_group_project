@@ -2,38 +2,27 @@
 // ============================================================================
 // ReadablePage.cs
 // A note page the user can click on to view. Cannot be picked up, but can be
-// viewed multiple times.
-// Needs a trigger collider (Is Trigger ticked) to detect the player nearby.
+// viewed multiple times. Click to open the page; click again or press Esc to
+// close it.
+//
+// Needs ONE normal collider (Is Trigger unticked) so the crosshair can hit it.
+// How close you have to be is set by Max Distance on the Main Camera's
+// Playerinteractor. Needs a PageContents in the scene.
 // ============================================================================
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ReadablePage : MonoBehaviour, IInteractable
 {
-[Header("Item")]
+    [Header("Item")]
     [Tooltip("Contents of the page")]
+    [TextArea(5, 15)]
     [SerializeField] private string pageContents;
 
-    [Header("Input")]
-    private bool playerInRange;
-
-    // The page will display in the UI
+    // Click: open the page, or close it if it's already open.
     public void Interact()
     {
-        if (!playerInRange) return;
-        // Do the stuff
-    }
-
-    // Trigger events: fire when the player walks into / out of the item's trigger collider.
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) playerInRange = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player")) playerInRange = false;
+        if (PageContents.Instance.IsOpen) PageContents.Instance.Hide();
+        else PageContents.Instance.Show(pageContents);
     }
 }

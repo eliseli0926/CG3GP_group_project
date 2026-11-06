@@ -48,7 +48,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private void LateUpdate()
     {
         // Don't rotate the camera while the player is using menus.
-        Vector2 look = InventoryUI.CursorFree ? Vector2.zero : lookAction.action.ReadValue<Vector2>();
+        Vector2 look = lookAction.action.ReadValue<Vector2>();
         yaw += look.x * mouseSensitivity;
         pitch -= look.y * mouseSensitivity;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);

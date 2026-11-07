@@ -87,39 +87,45 @@ Based on project Part 1-2 Feedback, adding:
 
 \*\*Instructor feedback
 
-- Story is going to drive the gameplay → keep adding notes and story elements (notes, clues about the story, etc)
+- ~~Story is going to drive the gameplay → keep adding notes and story elements (notes, clues about the story, etc)~~
 - Try different combinations to make new levels (Levels in hallways, hiding in cabinets, etc.)
-- Clues from NPCs can be simpler → Notes
+  - _Note_: We will probably try to implement this in the next checkpoint.
+- ~~Clues from NPCs can be simpler → Notes~~
 - ~~Have a keybind for the inventory system (Ex: pressing “i” should pop up the inventory window)~~
-- On player death, freeze the controller
-- give player feedback to note they've been spotted by enemy and are being chased (e.g. enemy or UI screen flash.)
+- ~~On player death, freeze the controller~~
+- ~~Give player feedback to note they've been spotted by enemy and are being chased (e.g. enemy or UI screen flash.)~~
 
 **Particle Systems and VFX Graph (Ch 11)**
 
-- Add ambient dust particles floating in the rooms and a low ground-fog particle effect in the hallway.
+- ~~Add ambient dust particles floating in the rooms and a low ground-fog particle effect in the hallway.~~
 - Add spark particles to the fuse box puzzle and a small burst effect when a locked object is unlocked, so the player gets visual feedback.
+  - _Note:_ Not done, as we did not decide to implement a fuse box.
 
 **Lighting with URP (Ch 12)**
 
-- Do the full horror lighting pass carried over from Part 2: dim ambient light, ~~warm point lights on the candles~~, and darker hallways so the caretaker is harder to spot.
-- Bake lighting for static furniture and walls (with light probes for the player and caretaker) to get softer shadows with better performance.
-- Add scene fog through the Lighting settings.
+- ~~Do the full horror lighting pass carried over from Part 2: dim ambient light, warm point lights on the candles, and darker hallways so the caretaker is harder to spot.~~
+- ~~Bake lighting for static furniture and walls (with light probes for the player and caretaker) to get softer shadows with better performance.~~
+- ~~Add scene fog through the Lighting settings.~~
 
 **Fullscreen Post-processing (Ch 13)**
 
-- Add a Global Volume with bloom (so candle flames glow), a vignette, film grain, and color adjustments for a cold, desaturated look.
-- Make the vignette tighten and/or add a red tint while the caretaker is chasing the player, to build tension.
+- ~~Add a Global Volume with bloom (so candle flames glow), a vignette, film grain, and color adjustments for a cold, desaturated look.~~
+- ~~Make the vignette tighten and/or add a red tint while the caretaker is chasing the player, to build tension.~~
 
 **Carried over from Part 2**
 
 - 1–2 re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate) placed outside the first room.
+  - _Note:_ We are currently working on a keypad, which will be more complex, so it wasn't completed yet.
 - More checkpoints as new rooms are added.
-- Replace the player model and non-hostile NPCs with assets
+- ~~Replace the player model and non-hostile NPCs with assets~~
 
 #### Additions
 
-- TODO: Fill this in.
-- Adjust the inventory to be accessed with the I key instead of making the player esc + click on the inventory button
+- We decided to replace the fuse box with a keypad, since an old manor lit with candles isn't likely to have a full electrical system built in.
+- Adjust the inventory to be accessed with the I key instead of making the player esc + click on the inventory button.
+- Basic caretaker/player movement animations
+- When the player's pointer is on an interactable NPC, there's a prompt to interact with it; this reveals whatever objects the NPC had on their person.
+- A main menu UI and scene for the start of the game with basic movement instructions. We plan on adding to this later to refine the UI, update instructions, and possibly add more gamemodes if time allows.
 
 ### Project Checkpoint 3-4: Sound, UI, and Animation
 
@@ -130,13 +136,14 @@ Based on project Part 1-2 Feedback, adding:
 
 **User-Friendly UI (Ch 15)**
 
-- Update our existing basic UI for inventory, popup boxes, and death screen
+- Update our existing basic UI for inventory, popup boxes, death screen, and main menu
 - Add dialogue boxes for NPC interactions and note-reading
 
 **Animations (Ch 17)**
 
 - Animate the player model
 - Animate caretaker enemy's movement
+  - Since basic animations were technically partially completed, we're going to work on 'special' animations in checkpoint 3-4 like the player hiding
 
 ## Development
 
@@ -234,27 +241,46 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 <img width="614" height="386" alt="view of enemy" src="https://github.com/user-attachments/assets/9ca41468-0418-4c5a-bc2b-54268d99da56" />
 <img width="615" height="389" alt="loss screen" src="https://github.com/user-attachments/assets/d72f7794-0d19-4cd0-ae05-e8c8a4afdced" />
 
+### Project Part 3: Visual Effects
+
+- Added point lights to the Dark Fantasy Kit [Lite] candle prefabs and added ambient effects (ex: bloom, vignette).
+- Added vignette, etc. effects when the enemy spots the player and starts chasing.
+- Replaced the player primitive model with imported asset.
+- Implemented player walking and jumping animation by importing animations from Mixamo.
+- Implemented enemy walking animation, also importing animations from Mixamo.
+- Added a new room on a lower level accessible by a hallway ramp.
+- Adjusted sizes so that the caretaker enemy can now enter rooms, so that we no longer need some lore-related explanation for why they can't.
+- Started to add a keypad puzzle for unlocking chests, doors, etc.
+- Added a basic main menu for game start.
+
+**Scripts**
+
+- **DeadNPC** is used for all dead NPCs (non-hostile) which implements IInteractable. If the NPC has a page on them, there will be a prompt to search the NPC whenever the cursor points at the NPC. When the NPC is clicked on, their page will appear nearby and the prompt will no longer be shown.
+- **InteractPrompt** is used for displaying the prompt text (white, no background) for interactable objects. Currently it's only attached to the NPC(s), but we plan on adding it to all interactables.
+- **ReadablePage** is attached to any page and makes it interactable as well as stores the page's text.
+- **PageContents** is attached to a PagePanel object (child of the Canvas) to show/hide the contents of a page when the page is clicked on.
+- **MainMenu** is attached to an object child of a Canvas in the MainMenu scene, displaying the menu and starting the game/switching to the room0 scene when the user clicks the start button.
+- **NPCAnimator** is attached to the caretaker enemy NPC to make the animation's movement matches with its actual displacement movement.
+- **SpottedVignette** is used for adding the screen effects when the caretaker enemy has spotted the player and started to chase them.
+
+**Demonstration**
+
 **Assets Used**
 
 - [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
 - [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): used for the caretaker to replace its original primitive model
-- [Distant Lands Free Characters](https://assetstore.unity.com/packages/3d/characters/distant-lands-free-characters-178123): an example of what may replace NPCs or the player model; it has replaced the one non-hostile NPC that currently exists, but we haven't decided on the player's appearance yet.
-
-### Project Part 3: Visual Effects
-
-- Added point lights to the Dark Fantasy Kit [Lite] candle prefabs
-- Replaced the player primitive model with imported asset
-- Implemented player walking and jumping animation by importing animations from Mixamo
-
-**Assets Used**
-
-- Same assets from project part 2
+- [Distant Lands Free Characters](https://assetstore.unity.com/packages/3d/characters/distant-lands-free-characters-178123): replaces NPC models
 - [AllSky Free - 10 Sky / Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014) Added a skybox/cubemap, which may be visible if we decide to add windows to rooms/hallways or if we want an ending cutscene of the player's escape
 - [Books Essentials](https://assetstore.unity.com/packages/3d/props/books-essentials-362582) Added page assets for notes
 - [Mixamo](https://www.mixamo.com/) - character movement animations
+- [Urban Man - Polymate - Low Poly Modular Character](https://assetstore.unity.com/packages/3d/characters/urban-man-polymate-low-poly-modular-character-357826) - player asset to replace the primitive model
+- [Keypad FREE](https://assetstore.unity.com/packages/3d/props/electronics/keypad-free-262151) - added keypad asset to a locked chest
+- Imported a [Demon Horror Creature with Weapon](https://assetstore.unity.com/packages/3d/characters/creatures/demon-horror-creature-with-weapon-247792) assets package but it's currently unclear if we will use it in the game.
 
 ## Instructions for Testing the Project
 
+- **Game start:**
+  - Switch to the MainMenu scene before pressing the play-game button.
 - **Player controls:**
   - WASD for horizontal movement
   - Space to jump
@@ -272,7 +298,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
   4. Use the second key to open the room's door.
 - **Testing the caretaker:**
   - Step into the hallway. The caretaker patrols between two points, pausing at each.
-  - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
+  - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route. When walking into its view, a reddish vignette should appear on the screen.
   - Let it touch you while it can see you to bring up the lose screen.
 - **Testing the lose screen:**
   - **Back to Checkpoint:** you respawn in the last room you were in with your keys and unlocked doors kept, and the caretaker goes back to its starting point.

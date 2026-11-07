@@ -265,6 +265,13 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 - **SpottedVignette** is used for adding the screen effects when the caretaker enemy has spotted the player and started to chase them.
 
 **Demonstration**
+Basic main menu appearance
+<img width="557" height="325" alt="image" src="https://github.com/user-attachments/assets/37bbb88f-765f-43be-b0b7-da4a6aaa0edd" />
+[Video of NPC interaction, page appearance, and using the I key for inventory instead of Esc + button click](https://github.com/user-attachments/assets/4fccc92e-55e0-4360-9f6d-c2759f262b06)
+Ambient environment
+<img width="562" height="326" alt="image" src="https://github.com/user-attachments/assets/f7129a17-9f2b-47a9-a12d-6c1cc09da460" />
+[Video of player and caretaker enemy movement animation, red vignette on chase, and death screen](https://github.com/user-attachments/assets/56c71f55-b451-4029-969a-0d00e18705c3)
+
 
 **Assets Used**
 
@@ -293,6 +300,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
   - Keys (picked up into the inventory)
   - Cabinets/lockers (may be locked and require a key)
   - Doors (may be locked and require a key)
+  - Pages (click on a non-hostile NPC and then click on the page that appears nearby)
 - **Walkthrough of the first room:**
   1. Pick up the key on the floor next to the dummy sitting in the corner.
   2. Of the two lockers (cabinets with shelves), open the **left** one with that key. Clicking it without the key shows a "locked" popup.
@@ -300,7 +308,8 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
   4. Use the second key to open the room's door.
 - **Testing the caretaker:**
   - Step into the hallway. The caretaker patrols between two points, pausing at each.
-  - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route. When walking into its view, a reddish vignette should appear on the screen.
+  - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
+  - When walking into its view, a reddish vignette should appear on the screen.
   - Let it touch you while it can see you to bring up the lose screen.
 - **Testing the lose screen:**
   - **Back to Checkpoint:** you respawn in the last room you were in with your keys and unlocked doors kept, and the caretaker goes back to its starting point.

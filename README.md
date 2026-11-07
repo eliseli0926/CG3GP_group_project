@@ -116,7 +116,7 @@ Based on project Part 1-2 Feedback, adding:
 
 - 1–2 re-skins of the collect-and-use puzzle (e.g. fuse box, crank and gate) placed outside the first room.
   - _Note:_ We are currently working on a keypad, which will be more complex, so it wasn't completed yet.
-- More checkpoints as new rooms are added.
+- ~~More checkpoints as new rooms are added.~~
 - ~~Replace the player model and non-hostile NPCs with assets~~
 
 #### Additions
@@ -257,7 +257,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 **Scripts**
 
 - **DeadNPC** is used for all dead NPCs (non-hostile) which implements IInteractable. If the NPC has a page on them, there will be a prompt to search the NPC whenever the cursor points at the NPC. When the NPC is clicked on, their page will appear nearby and the prompt will no longer be shown.
-- **InteractPrompt** is used for displaying the prompt text (white, no background) for interactable objects. Currently it's only attached to the NPC(s), but we plan on adding it to all interactables.
+- **InteractPrompt** is used for displaying the prompt text (white, no background) for interactable objects. Currently it's only attached to the NPCs, but we plan on adding it to all interactables.
 - **ReadablePage** is attached to any page and makes it interactable as well as stores the page's text.
 - **PageContents** is attached to a PagePanel object (child of the Canvas) to show/hide the contents of a page when the page is clicked on.
 - **MainMenu** is attached to an object child of a Canvas in the MainMenu scene, displaying the menu and starting the game/switching to the room0 scene when the user clicks the start button.
@@ -271,7 +271,6 @@ Basic main menu appearance
 Ambient environment
 <img width="562" height="326" alt="image" src="https://github.com/user-attachments/assets/f7129a17-9f2b-47a9-a12d-6c1cc09da460" />
 [Video of player and caretaker enemy movement animation, red vignette on chase, and death screen](https://github.com/user-attachments/assets/56c71f55-b451-4029-969a-0d00e18705c3)
-
 
 **Assets Used**
 

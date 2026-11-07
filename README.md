@@ -99,7 +99,7 @@ Based on project Part 1-2 Feedback, adding:
 
 - ~~Add ambient dust particles floating in the rooms and a low ground-fog particle effect in the hallway.~~
 - Add spark particles to the fuse box puzzle and a small burst effect when a locked object is unlocked, so the player gets visual feedback.
-  - _Note:_ Not done, as we did not decide to implement a fuse box.
+  - _Note:_ Not done, as we decided not to implement a fuse box.
 
 **Lighting with URP (Ch 12)**
 
@@ -243,7 +243,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 
 ### Project Part 3: Visual Effects
 
-- Added point lights to the Dark Fantasy Kit [Lite] candle prefabs and added ambient effects (ex: bloom, vignette).
+- Added point lights to the Dark Fantasy Kit [Lite] candle prefabs and added ambient effects (ex: bloom, vignette, dust particles).
 - Added vignette, etc. effects when the enemy spots the player and starts chasing.
 - Replaced the player primitive model with imported asset.
 - Implemented player walking and jumping animation by importing animations from Mixamo.
@@ -252,6 +252,7 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 - Adjusted sizes so that the caretaker enemy can now enter rooms, so that we no longer need some lore-related explanation for why they can't.
 - Started to add a keypad puzzle for unlocking chests, doors, etc.
 - Added a basic main menu for game start.
+- Added readable notes, which appear on a parchment paper-type background when clicked.
 
 **Scripts**
 
@@ -274,7 +275,8 @@ The caretaker is a NavMesh-based enemy with two states: **Patrol** and **Chase P
 - [Books Essentials](https://assetstore.unity.com/packages/3d/props/books-essentials-362582) Added page assets for notes
 - [Mixamo](https://www.mixamo.com/) - character movement animations
 - [Urban Man - Polymate - Low Poly Modular Character](https://assetstore.unity.com/packages/3d/characters/urban-man-polymate-low-poly-modular-character-357826) - player asset to replace the primitive model
-- [Keypad FREE](https://assetstore.unity.com/packages/3d/props/electronics/keypad-free-262151) - added keypad asset to a locked chest
+- [Keypad FREE](https://assetstore.unity.com/packages/3d/props/electronics/keypad-free-262151) - added keypad asset to a locked Dark Fantasy Kit chest
+- [Aged parchment texture a vintage brown paper background](https://www.magnific.com/free-psd/aged-parchment-texture-vintage-brown-paper-background_406617979.htm#fromView=keyword&page=1&position=0&uuid=bcf107b2-8f2e-450f-b6ab-8b61a9cf0750&track=ais_hybrid&query=Old+paper+png) - for display of pages
 - Imported a [Demon Horror Creature with Weapon](https://assetstore.unity.com/packages/3d/characters/creatures/demon-horror-creature-with-weapon-247792) assets package but it's currently unclear if we will use it in the game.
 
 ## Instructions for Testing the Project

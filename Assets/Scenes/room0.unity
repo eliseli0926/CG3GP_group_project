@@ -2463,8 +2463,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: cbd6aefd8cb567d48b5dab50d03f3d14,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5687537342788716852, guid: 813f879c2debf48459ce6c756f2cf05d,
         type: 3}
       propertyPath: m_CollectObjects
@@ -4222,6 +4221,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1314125132284659947}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &853072141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853072129}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 3, z: 2}
+  m_Center: {x: 0, y: -2, z: 0}
 --- !u!1001 &875916909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6129,8 +6149,8 @@ Transform:
   m_GameObject: {fileID: 1421046365}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 32.15, y: -1.51, z: 54.61}
-  m_LocalScale: {x: 1, y: 23.280954, z: 27.070564}
+  m_LocalPosition: {x: 30.03, y: -1.51, z: 54.61}
+  m_LocalScale: {x: 1, y: 23.280954, z: 29}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7133,6 +7153,12 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 58242cd8a87c62944973d9412a7092d3, type: 2}
+    - target: {fileID: 5687537342788716852, guid: 813f879c2debf48459ce6c756f2cf05d,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: cbd6aefd8cb567d48b5dab50d03f3d14,
+        type: 2}
     - target: {fileID: 6992378714794985462, guid: 813f879c2debf48459ce6c756f2cf05d,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -10185,6 +10211,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 853072136}
+    - targetCorrespondingSourceObject: {fileID: 6285406318065884740, guid: fa2f6bfef745c454b9544fe987aa1892,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 853072141}
   m_SourcePrefab: {fileID: 100100000, guid: fa2f6bfef745c454b9544fe987aa1892, type: 3}
 --- !u!1001 &3413728778069966671
 PrefabInstance:

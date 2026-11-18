@@ -145,6 +145,30 @@ Based on project Part 1-2 Feedback, adding:
 - Animate caretaker enemy's movement
   - Since basic animations were technically partially completed, we're going to work on 'special' animations in checkpoint 3-4 like the player hiding
 
+#### Additions
+
+- Based on instructor feedback:
+  - Decided not to freeze the game on opening inventory, because it could prevent the player from continuing to move away from an enemy and cause player death
+  - Animate door open/close
+  - Audio on movement + background music were already planned
+  - Make the ramp into looking like stairs but walked on as an invisible ramp
+  - Add UI feedback for when cursor hovers over interactable thing vs non-interactable things
+
+### Project Part 4: Finishing Touches
+
+**Game development**
+
+- TODO: fill in
+
+**Performance Wizardry (Ch 18)**
+
+- Optimize graphics, processing, and memory
+
+**Generating and Debugging (Ch 19)**
+
+- Build project
+- Debug build
+
 ## Development
 
 ### Project Checkpoint 1-2
@@ -272,7 +296,9 @@ Ambient environment
 <img width="562" height="326" alt="image" src="https://github.com/user-attachments/assets/f7129a17-9f2b-47a9-a12d-6c1cc09da460" />
 [Video of player and caretaker enemy movement animation, red vignette on chase, and death screen](https://github.com/user-attachments/assets/56c71f55-b451-4029-969a-0d00e18705c3)
 
-**Assets Used**
+### Project Checkpoint 3-4: Sound, UI, and Animation
+
+- **Assets Used**
 
 - [Dark Fantasy Kit [Lite]](https://assetstore.unity.com/packages/3d/environments/fantasy/dark-fantasy-kit-lite-127925): building and furniture models and textures
 - [Cursed Priest - Horror Character](https://assetstore.unity.com/packages/3d/characters/creatures/cursed-priest-horror-character-167606#reviews): used for the caretaker to replace its original primitive model
@@ -284,6 +310,7 @@ Ambient environment
 - [Keypad FREE](https://assetstore.unity.com/packages/3d/props/electronics/keypad-free-262151) - added keypad asset to a locked Dark Fantasy Kit chest
 - [Aged parchment texture a vintage brown paper background](https://www.magnific.com/free-psd/aged-parchment-texture-vintage-brown-paper-background_406617979.htm#fromView=keyword&page=1&position=0&uuid=bcf107b2-8f2e-450f-b6ab-8b61a9cf0750&track=ais_hybrid&query=Old+paper+png) - for display of pages
 - Imported a [Demon Horror Creature with Weapon](https://assetstore.unity.com/packages/3d/characters/creatures/demon-horror-creature-with-weapon-247792) assets package but it's currently unclear if we will use it in the game.
+- [Bloodlines - Dark UI](https://assetstore.unity.com/packages/2d/gui/bloodlines-dark-ui-328721) - for UI
 
 ## Instructions for Testing the Project
 

@@ -314,6 +314,7 @@ Ambient environment
 - [Aged parchment texture a vintage brown paper background](https://www.magnific.com/free-psd/aged-parchment-texture-vintage-brown-paper-background_406617979.htm#fromView=keyword&page=1&position=0&uuid=bcf107b2-8f2e-450f-b6ab-8b61a9cf0750&track=ais_hybrid&query=Old+paper+png) - for display of pages
 - Imported a [Demon Horror Creature with Weapon](https://assetstore.unity.com/packages/3d/characters/creatures/demon-horror-creature-with-weapon-247792) assets package but it's currently unclear if we will use it in the game.
 - [Bloodlines - Dark UI](https://assetstore.unity.com/packages/2d/gui/bloodlines-dark-ui-328721) - for UI
+- [Free Horror Ambience 2](https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651) - for ambient background audio
 
 ## Instructions for Testing the Project
 

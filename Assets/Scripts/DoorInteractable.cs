@@ -13,6 +13,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class DoorInteractable : MonoBehaviour, IInteractable
@@ -27,15 +28,26 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     [Tooltip("How close (in meters) the player must be to the door's pivot to open/close it.")]
     [SerializeField] private float interactRange = 5f;
 
+    [Header("Animation")]
+    [Tooltip("Speed of door swing, in degrees per second")]
+    [SerializeField] private float swingSpeed = 150f;
+
     // Internal variables used to check if the user can open/close the door
     private Transform player;
     private bool isOpen;
     private bool isUnlocked;
 
+    private Quaternion closedRotation;
+    private Quaternion openRotation;
+    private Coroutine swingRoutine;
+
     private void Start()
     {
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject != null) player = playerObject.transform;
+
+        closedRotation = transform.localRotation;
+        openRotation = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
     }
 
     private bool PlayerInRange()
@@ -43,7 +55,6 @@ public class DoorInteractable : MonoBehaviour, IInteractable
         return player != null && Vector3.Distance(player.position, transform.position) <= interactRange;
     }
 
-    // Will likely later add some animation component once we learn it, but for now the door will instantly open/close.
     // Any door that has no required item name can be opened unconditionally and is treated as an unlocked door.
     public void Interact()
     {
@@ -51,22 +62,19 @@ public class DoorInteractable : MonoBehaviour, IInteractable
         // Close the door
         if (isOpen)
         {
-            transform.Rotate(0f, -openAngle, 0f);
-            isOpen = false;
+            SetOpen(false);
             return;
         }
         // Unlocked door that is closed
         if (isUnlocked || requiredItemName == "")
         {
-            transform.Rotate(0f, openAngle, 0f);
-            isOpen = true;
+            SetOpen(true);
             return;
         }
         // If the user has the right item, consume it from the inventory and unlock and open the door.
         if (InventoryManager.Instance.HasItem(requiredItemName)) {
             InventoryManager.Instance.RemoveItem(requiredItemName);
-            transform.Rotate(0f, openAngle, 0f);
-            isOpen = true;
+            SetOpen(true);
             isUnlocked = true;
             return;
         };
@@ -78,5 +86,30 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, interactRange);
+    }
+
+    // Handles opening and closing, and calls the door animation.
+    // If the door is in the middle of opening/closing, it stops the current animation
+    // and starts the movement in the opposite direction
+    private void SetOpen(bool open)
+    {
+        isOpen = open;
+        if (swingRoutine != null) StopCoroutine(swingRoutine);
+        swingRoutine = StartCoroutine(SwingTo(open ? openRotation : closedRotation));
+    }
+
+    // Door animation
+    private IEnumerator SwingTo(Quaternion target)
+    {
+        while (Quaternion.Angle(transform.localRotation, target) > 0.01f)
+        {
+            transform.localRotation = Quaternion.RotateTowards(
+                transform.localRotation, target, swingSpeed * Time.deltaTime
+            );
+            yield return null;
+        }
+
+        transform.localRotation = target;
+        swingRoutine = null;
     }
 }

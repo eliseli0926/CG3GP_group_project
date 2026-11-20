@@ -302,6 +302,7 @@ Ambient environment
 - Adjusted crosshair so it changes appearance (red circle filled in with black --> red circle filled in with red) upon pointing at any IInteractable
 - Added ambient audio from Free Horror Ambience 2
 - Added door animations
+- Added audio for object interactions (door open/close, when locked/when player unlocks; item pickup; button click)
 
 - **Assets Used**
 
@@ -319,6 +320,7 @@ Ambient environment
 - [Free Horror Ambience 2](https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651) - for ambient background audio
 - [Door, Cabinets, & Lockers (Free)](https://assetstore.unity.com/packages/audio/sound-fx/foley/door-cabinets-lockers-free-257610) - for door sfx
 - [Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879) - for player footsteps sfx
+-
 
 ## Instructions for Testing the Project
 

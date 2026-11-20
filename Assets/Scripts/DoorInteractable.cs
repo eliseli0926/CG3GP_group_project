@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class DoorInteractable : MonoBehaviour, IInteractable
 {
     [Header("Input")]
@@ -31,6 +32,20 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     [Header("Animation")]
     [Tooltip("Speed of door swing, in degrees per second")]
     [SerializeField] private float swingSpeed = 150f;
+
+    [Header("Sounds")]
+    [Tooltip("Plays when the door starts opening.")]
+    [SerializeField] private AudioClip openSound;
+    [Tooltip("Plays when the door starts closing.")]
+    [SerializeField] private AudioClip closeSound;
+    [Tooltip("Plays when the right item unlocks the door (e.g. a key turning).")]
+    [SerializeField] private AudioClip unlockSound;
+    [Tooltip("Plays when the player tries the door without the right item (e.g. a handle rattling).")]
+    [SerializeField] private AudioClip lockedSound;
+    [Tooltip("Randomly changes the pitch a little each time so repeated sounds don't feel robotic. 0 = no change.")]
+    [Range(0f, 0.3f)] [SerializeField] private float pitchVariation = 0.08f;
+
+    private AudioSource audioSource;
 
     // Internal variables used to check if the user can open/close the door
     private Transform player;
@@ -48,6 +63,19 @@ public class DoorInteractable : MonoBehaviour, IInteractable
 
         closedRotation = transform.localRotation;
         openRotation = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
+
+        // Use the door's AudioSource if it has one; otherwise add one so the door still works.
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 1f;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+        audioSource.pitch = 1f + UnityEngine.Random.Range(-pitchVariation, pitchVariation);
+        audioSource.PlayOneShot(clip);
     }
 
     private bool PlayerInRange()
@@ -76,8 +104,10 @@ public class DoorInteractable : MonoBehaviour, IInteractable
             InventoryManager.Instance.RemoveItem(requiredItemName);
             SetOpen(true);
             isUnlocked = true;
+            PlaySound(unlockSound);
             return;
         };
+        PlaySound(lockedSound); 
         MessagePopup.Instance.Show(lockedMessage);
     }
 
@@ -94,6 +124,7 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     private void SetOpen(bool open)
     {
         isOpen = open;
+        PlaySound(open ? openSound : closeSound);
         if (swingRoutine != null) StopCoroutine(swingRoutine);
         swingRoutine = StartCoroutine(SwingTo(open ? openRotation : closedRotation));
     }

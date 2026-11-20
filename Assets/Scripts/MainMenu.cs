@@ -10,6 +10,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class MainMenu : MonoBehaviour
     [Tooltip("Text under the Start button. The script fills it in for you.")]
     [SerializeField] private TMP_Text instructionsText;
 
+    [Tooltip("Seconds to wait after clicking Start, so the click sound can play.")]
+    [SerializeField] private float startDelay = 0.5f;
+
     private void Start()
     {
         // The game scene locks and hides the cursor, so make sure it's
@@ -26,10 +30,13 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
-    // Hooked up to the Start button's On Click.
     public void StartGame()
     {
+        StartCoroutine(LoadAfterDelay());
+    }
+    private IEnumerator LoadAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(startDelay);
         SceneManager.LoadScene(gameSceneName);
     }
 }

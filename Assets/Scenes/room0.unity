@@ -8068,6 +8068,7 @@ MonoBehaviour:
   moveSpeed: 6
   jumpSpeed: 8
   groundCheckDistance: 3
+  footstepLoop: {fileID: 8300000, guid: 270699023829eae4d811e4fc4f03f5f2, type: 3}
 --- !u!65 &1673210357
 BoxCollider:
   m_ObjectHideFlags: 0

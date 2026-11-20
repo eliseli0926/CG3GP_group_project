@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("How far down to check for ground: about half the player's height plus a little.")]
     [SerializeField] private float groundCheckDistance = 1.1f;
 
+    [Header("Footsteps")]
+    [Tooltip("Footstep sound that loops while the player is walking.")]
+    [SerializeField] private AudioClip footstepLoop;
+
+    private AudioSource footstepSource;
     private Rigidbody body;
     private Transform cam;
     private Animator animator;
@@ -32,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
         cam = Camera.main.transform;
 
         animator = GetComponentInChildren<Animator>();
+
+        footstepSource = gameObject.AddComponent<AudioSource>();
+        footstepSource.clip = footstepLoop;
+        footstepSource.loop = true;
+        footstepSource.playOnAwake = false;
 
         moveAction.action.Enable();
         jumpAction.action.Enable();
@@ -54,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
         if (move != Vector3.zero) transform.forward = move;
 
         if (animator != null) animator.SetFloat("Speed", move.magnitude);
+
+        // Loop footsteps while walking on the ground; stop when standing still or in the air.
+        bool walking = move != Vector3.zero && IsGrounded();
+        if (walking && !footstepSource.isPlaying) footstepSource.Play();
+        else if (!walking && footstepSource.isPlaying) footstepSource.Stop();
 
         if (jumpAction.action.WasPressedThisFrame() && IsGrounded())
         {

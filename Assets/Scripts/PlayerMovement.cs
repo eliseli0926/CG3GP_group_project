@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody body;
     private Transform cam;
     private Animator animator;
+    private bool controlEnabled = true;
 
     private void Start()
     {
@@ -49,8 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
-        Vector2 input = moveAction.action.ReadValue<Vector2>();
+        Vector2 input = controlEnabled ? moveAction.action.ReadValue<Vector2>() : Vector2.zero;
 
         // Camera's forward/right with the up/down tilt removed, so W always means "away from the camera".
         Vector3 forward = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         if (walking && !footstepSource.isPlaying) footstepSource.Play();
         else if (!walking && footstepSource.isPlaying) footstepSource.Stop();
 
-        if (jumpAction.action.WasPressedThisFrame() && IsGrounded())
+        if (controlEnabled && jumpAction.action.WasPressedThisFrame() && IsGrounded())
         {
             body.AddForce(Vector3.up * jumpSpeed, ForceMode.VelocityChange);
             if (animator != null) animator.SetTrigger("Jump");
@@ -81,5 +81,11 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance);
+    }
+
+    // Call when freezing/unfreezing player movement
+    public void SetControlEnabled(bool value)
+    {
+        controlEnabled = value;
     }
 }

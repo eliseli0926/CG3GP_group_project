@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 6569740556025367221}
   - component: {fileID: 8025274907253865723}
   - component: {fileID: 7266453418634303934}
-  - component: {fileID: 7827608687440965148}
+  - component: {fileID: 5446798808086617545}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -187,7 +187,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4952097, y: 1.0413208, z: 3.781551}
   m_Center: {x: -0.0018210411, y: 0.0206604, z: 0.4339521}
---- !u!114 &7827608687440965148
+--- !u!114 &5446798808086617545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Key
+  pickupSound: {fileID: 0}
+  pickupVolume: 1
 --- !u!1 &3106206501180311192
 GameObject:
   m_ObjectHideFlags: 0

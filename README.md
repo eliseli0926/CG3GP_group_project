@@ -136,7 +136,7 @@ Based on project Part 1-2 Feedback, adding:
 
 **User-Friendly UI (Ch 15)**
 
-- Update our existing basic UI for inventory, popup boxes, death screen, and main menu
+- ~~Update our existing basic UI for inventory, popup boxes, death screen, and main menu~~
 - Add dialogue boxes for NPC interactions and note-reading
 
 **Animations (Ch 17)**
@@ -297,6 +297,9 @@ Ambient environment
 [Video of player and caretaker enemy movement animation, red vignette on chase, and death screen](https://github.com/user-attachments/assets/56c71f55-b451-4029-969a-0d00e18705c3)
 
 ### Project Checkpoint 3-4: Sound, UI, and Animation
+
+- Updated the UI to use assets from the Bloodlines - Dark UI package
+- Adjusted crosshair so it changes appearance (red circle filled in with black --> red circle filled in with red) upon pointing at any IInteractable
 
 - **Assets Used**
 

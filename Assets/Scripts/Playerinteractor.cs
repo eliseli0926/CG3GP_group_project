@@ -12,6 +12,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
+using Image = UnityEngine.UI.Image;
 
 public class Playerinteractor : MonoBehaviour
 {
@@ -29,6 +31,12 @@ public class Playerinteractor : MonoBehaviour
     [Tooltip("Text under the crosshair that shows the prompt word (e.g. \"Search\").")]
     [SerializeField] private TMP_Text promptLabel;
 
+    [Header("Crosshair")]
+    [Tooltip("Image component of crosshair dot")]
+    [SerializeField] private Image crosshairImage;
+    [SerializeField] private Sprite defaultCrosshair;
+    [SerializeField] private Sprite interactCrosshair;
+
     private Camera cam;
 
     private void Start()
@@ -36,6 +44,7 @@ public class Playerinteractor : MonoBehaviour
         cam = GetComponent<Camera>();
         interactAction.action.Enable();
         if (promptLabel != null) promptLabel.text = "";
+        SetCrosshair(false);
     }
 
     private void Update()
@@ -43,6 +52,7 @@ public class Playerinteractor : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
         {
             ShowPrompt("");
+            SetCrosshair(false);
             return;
         }
 
@@ -53,26 +63,36 @@ public class Playerinteractor : MonoBehaviour
         if (!Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactLayers, QueryTriggerInteraction.Ignore))
         {
             ShowPrompt("");
+            SetCrosshair(false);
             return;
         }
 
+        IInteractable target = hit.collider.GetComponentInParent<IInteractable>();
         InteractPrompt prompt = hit.collider.GetComponentInParent<InteractPrompt>();
+
         ShowPrompt(prompt != null && prompt.enabled ? prompt.PromptText : "");
+        SetCrosshair(target != null);
 
          Debug.Log("Aiming at: " + hit.collider.name
                   + " | prompt: " + (prompt != null ? prompt.PromptText : "NONE")
                   + " | interactable: " + (hit.collider.GetComponentInParent<IInteractable>() != null));
- 
+
         // Clicked: interact with whatever we're aiming at.
-        if (interactAction.action.WasPressedThisFrame())
+        if (target != null && interactAction.action.WasPressedThisFrame())
         {
-            IInteractable target = hit.collider.GetComponentInParent<IInteractable>();
-            target?.Interact();
+            target.Interact();
         }
 
     }
     private void ShowPrompt(string text)
     {
         if (promptLabel != null) promptLabel.text = text;
+    }
+
+    private void SetCrosshair(bool isOverInteractable)
+    {
+        if (crosshairImage == null) return;
+        Sprite crosshairAppearance = isOverInteractable ? interactCrosshair : defaultCrosshair;
+        if (crosshairImage.sprite != crosshairAppearance) crosshairImage.sprite = crosshairAppearance;
     }
 }

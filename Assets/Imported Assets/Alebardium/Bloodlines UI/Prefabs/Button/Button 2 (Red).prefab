@@ -68,7 +68,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5300590569206946129, guid: c2636267bd3ba3b47aa8f03ed72f3778, type: 3}
+  m_Sprite: {fileID: 5300590569206946129, guid: c2636267bd3ba3b47aa8f03ed72f3778,
+    type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -107,10 +108,13 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 1867746658213947531, guid: ca663c96099365c468f89ef28c315cf4, type: 3}
-    m_PressedSprite: {fileID: 7348062147863417607, guid: a90be1f63489a614ebddd20c85481360, type: 3}
+    m_HighlightedSprite: {fileID: 1867746658213947531, guid: ca663c96099365c468f89ef28c315cf4,
+      type: 3}
+    m_PressedSprite: {fileID: 7348062147863417607, guid: a90be1f63489a614ebddd20c85481360,
+      type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 8713535002052672558, guid: 8afa818a6bdb98846a959171ddb660b3, type: 3}
+    m_DisabledSprite: {fileID: 8713535002052672558, guid: 8afa818a6bdb98846a959171ddb660b3,
+      type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -207,7 +211,8 @@ MonoBehaviour:
   m_text: Button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e48d81020762c7946ac70f95631c3c78, type: 2}
-  m_sharedMaterial: {fileID: 3403671416660078228, guid: e48d81020762c7946ac70f95631c3c78, type: 2}
+  m_sharedMaterial: {fileID: 3403671416660078228, guid: e48d81020762c7946ac70f95631c3c78,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -247,15 +252,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
+  m_ActiveFontFeatures: 
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

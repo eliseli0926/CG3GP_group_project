@@ -129,6 +129,9 @@ Based on project Part 1-2 Feedback, adding:
 
 ### Project Checkpoint 3-4: Sound, UI, and Animation
 
+- Carried over from previous checkpoints:
+  - ~~Implement the keypad interactions~~
+
 **Audio and Music (Ch 14)**
 
 - Add sound effects for certain interactions (ex: for picking up an item, opening/closing a door, walking, caretaker catching the player, etc.)
@@ -303,6 +306,7 @@ Ambient environment
 - Added ambient audio from Free Horror Ambience 2
 - Added door animations
 - Added audio for object interactions (door open/close, when locked/when player unlocks; item pickup; button click)
+- Implemented keypad interaction and unlocking the chest to be searched
 
 - **Assets Used**
 
@@ -320,7 +324,6 @@ Ambient environment
 - [Free Horror Ambience 2](https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651) - for ambient background audio
 - [Door, Cabinets, & Lockers (Free)](https://assetstore.unity.com/packages/audio/sound-fx/foley/door-cabinets-lockers-free-257610) - for door sfx
 - [Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879) - for player footsteps sfx
--
 
 ## Instructions for Testing the Project
 
@@ -337,6 +340,8 @@ Ambient environment
   - Cabinets/lockers (may be locked and require a key)
   - Doors (may be locked and require a key)
   - Pages (click on a non-hostile NPC and then click on the page that appears nearby)
+  - Keypads (click on it to focus, enter the correct code, and E to exit focus)
+  - Chests (click on it when it is unlocked to search and reveal its contents)
 - **Walkthrough of the first room:**
   1. Pick up the key on the floor next to the dummy sitting in the corner.
   2. Of the two lockers (cabinets with shelves), open the **left** one with that key. Clicking it without the key shows a "locked" popup.
@@ -347,6 +352,10 @@ Ambient environment
   - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
   - When walking into its view, a reddish vignette should appear on the screen.
   - Let it touch you while it can see you to bring up the lose screen.
+- **Testing the keypad and chest:**
+  - In the second room, there is a keypad attached to a locked chest. The chest will have a PopupMessage if you try to interact before it is unlocked.
+  - Click on the keypad to zoom in and view its buttons. The keypad's code is 5567.
+  - Press E to leave the keypad, and click on the chest again to search. A 'special key' should appear.
 - **Testing the lose screen:**
   - **Back to Checkpoint:** you respawn in the last room you were in with your keys and unlocked doors kept, and the caretaker goes back to its starting point.
   - **Restart:** the whole game resets. Keys are back in their original spots and the doors are locked again.

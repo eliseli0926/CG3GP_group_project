@@ -12,7 +12,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using Microsoft.Unity.VisualStudio.Editor;
 using Image = UnityEngine.UI.Image;
 
 public class Playerinteractor : MonoBehaviour
@@ -38,6 +37,7 @@ public class Playerinteractor : MonoBehaviour
     [SerializeField] private Sprite interactCrosshair;
 
     private Camera cam;
+    private bool blocked; // added for keypad focus so it doesn't try to re-interact
 
     private void Start()
     {
@@ -49,6 +49,8 @@ public class Playerinteractor : MonoBehaviour
 
     private void Update()
     {
+        if (blocked) return;
+
         if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
         {
             ShowPrompt("");
@@ -94,5 +96,15 @@ public class Playerinteractor : MonoBehaviour
         if (crosshairImage == null) return;
         Sprite crosshairAppearance = isOverInteractable ? interactCrosshair : defaultCrosshair;
         if (crosshairImage.sprite != crosshairAppearance) crosshairImage.sprite = crosshairAppearance;
+    }
+
+    public void SetBlocked(bool value)
+    {
+        blocked = value;
+        if (value)
+        {
+            ShowPrompt("");
+            SetCrosshair(false);
+        }
     }
 }

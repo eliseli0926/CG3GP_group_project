@@ -300,6 +300,8 @@ Ambient environment
 
 - Updated the UI to use assets from the Bloodlines - Dark UI package
 - Adjusted crosshair so it changes appearance (red circle filled in with black --> red circle filled in with red) upon pointing at any IInteractable
+- Added ambient audio from Free Horror Ambience 2
+- Added door animations
 
 - **Assets Used**
 
@@ -315,6 +317,8 @@ Ambient environment
 - Imported a [Demon Horror Creature with Weapon](https://assetstore.unity.com/packages/3d/characters/creatures/demon-horror-creature-with-weapon-247792) assets package but it's currently unclear if we will use it in the game.
 - [Bloodlines - Dark UI](https://assetstore.unity.com/packages/2d/gui/bloodlines-dark-ui-328721) - for UI
 - [Free Horror Ambience 2](https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651) - for ambient background audio
+- [Door, Cabinets, & Lockers (Free)](https://assetstore.unity.com/packages/audio/sound-fx/foley/door-cabinets-lockers-free-257610) - for door sfx
+- [Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879) - for player footsteps sfx
 
 ## Instructions for Testing the Project
 

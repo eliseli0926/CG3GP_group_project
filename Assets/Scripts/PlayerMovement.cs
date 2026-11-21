@@ -18,18 +18,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float jumpSpeed = 5f;
 
+    [SerializeField] private InputActionReference crouchAction;
+    [SerializeField] private float crouchSpeed = 5.5f;
+
+
     [Tooltip("How far down to check for ground: about half the player's height plus a little.")]
     [SerializeField] private float groundCheckDistance = 1.1f;
 
-    [Header("Footsteps")]
-    [Tooltip("Footstep sound that loops while the player is walking.")]
-    [SerializeField] private AudioClip footstepLoop;
-
-    private AudioSource footstepSource;
     private Rigidbody body;
     private Transform cam;
     private Animator animator;
     private bool controlEnabled = true;
+
+    // True while the player is walking on the ground without crouching (enemies can hear this)
+    public bool IsMakingNoise { get; private set; }
 
     private void Start()
     {
@@ -39,23 +41,25 @@ public class PlayerMovement : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
 
-        footstepSource = gameObject.AddComponent<AudioSource>();
-        footstepSource.clip = footstepLoop;
-        footstepSource.loop = true;
-        footstepSource.playOnAwake = false;
-
         moveAction.action.Enable();
         jumpAction.action.Enable();
+        crouchAction.action.Enable();
     }
 
     private void Update()
     {
         Vector2 input = controlEnabled ? moveAction.action.ReadValue<Vector2>() : Vector2.zero;
 
+        bool crouching = controlEnabled && crouchAction.action.IsPressed();
+        float speed = crouching ? crouchSpeed : moveSpeed;
+        if (animator != null) animator.SetBool("Crouch", crouching);
+
         // Camera's forward/right with the up/down tilt removed, so W always means "away from the camera".
         Vector3 forward = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
         Vector3 right = Vector3.ProjectOnPlane(cam.right, Vector3.up).normalized;
-        Vector3 move = (forward * input.y + right * input.x) * moveSpeed;
+        Vector3 move = (forward * input.y + right * input.x) * speed;
+
+        IsMakingNoise = move != Vector3.zero && !crouching && IsGrounded();
 
         // Keep the current vertical velocity so gravity and jumping still work.
         body.velocity = new Vector3(move.x, body.velocity.y, move.z);
@@ -64,11 +68,6 @@ public class PlayerMovement : MonoBehaviour
         if (move != Vector3.zero) transform.forward = move;
 
         if (animator != null) animator.SetFloat("Speed", move.magnitude);
-
-        // Loop footsteps while walking on the ground; stop when standing still or in the air.
-        bool walking = move != Vector3.zero && IsGrounded();
-        if (walking && !footstepSource.isPlaying) footstepSource.Play();
-        else if (!walking && footstepSource.isPlaying) footstepSource.Stop();
 
         if (controlEnabled && jumpAction.action.WasPressedThisFrame() && IsGrounded())
         {

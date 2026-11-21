@@ -26,8 +26,36 @@ public class Sight : MonoBehaviour
     [Tooltip("The currently detected object. Do not change this in the inspector.")]
     public Collider detectedObject;
 
+    [Header("Sound")]
+    [Tooltip("Loops while the enemy can see the player.")]
+    [SerializeField] private AudioClip laughClip;
+    [Tooltip("Within this distance the laugh plays at full volume; it fades out beyond it.")]
+    [SerializeField] private float laughRange = 10f;
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = laughClip;
+        audioSource.loop = true;
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 1f;   // 3D sound: louder when the enemy is closer
+        audioSource.minDistance = laughRange;
+    }
+
     // Determines the currently detected object based on whether the target is within the viewing angle and distance and not blocked by obstacles
     void Update()
+    {
+        FindTarget();
+
+        // Loop the laugh while the player is visible; stop when out of sight
+        bool seesPlayer = detectedObject != null;
+        if (seesPlayer && !audioSource.isPlaying) audioSource.Play();
+        else if (!seesPlayer && audioSource.isPlaying) audioSource.Stop();
+    }
+
+    private void FindTarget()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, distance, objectsLayers);
         detectedObject = null;

@@ -28,13 +28,34 @@ public class EnemyFSM : MonoBehaviour
     [SerializeField] private float patrolSpeed = 2f;
     [SerializeField] private float chaseSpeed = 4f;
 
+    [Header("Hearing")]
+    [Tooltip("The enemy hears the player walking within this many meters, in any direction. Crouching is silent.")]
+    [SerializeField] private float hearingRange = 5f;
+
+    [Header("Doors")]
+    [Tooltip("How close (in meters) a closed door must be ahead for the enemy to stop at it.")]
+    [SerializeField] private float doorCheckDistance = 1.5f;
+
     private int currentPoint;
     private float waitTimer;
+    private PlayerMovement player;
 
     void Start()
     {
         agent = GetComponentInParent<NavMeshAgent>();
+        player = FindObjectOfType<PlayerMovement>();
         GoToCurrentPoint();
+    }
+
+    bool HearsPlayer()
+    {
+        return player != null && player.IsMakingNoise
+            && Vector3.Distance(agent.transform.position, player.transform.position) <= hearingRange;
+    }
+
+    bool CanSensePlayer()
+    {
+        return sightSensor.detectedObject != null || HearsPlayer();
     }
 
     void Update()
@@ -45,7 +66,7 @@ public class EnemyFSM : MonoBehaviour
 
     void Patrol()
     {
-        if (sightSensor.detectedObject != null)
+        if (CanSensePlayer())
         {
             currentState = EnemyState.ChasePlayer;
             return;
@@ -73,7 +94,7 @@ public class EnemyFSM : MonoBehaviour
 
     void ChasePlayer()
     {
-        if (sightSensor.detectedObject == null)
+        if (!CanSensePlayer())
         {
             currentState = EnemyState.Patrol;
             GoToCurrentPoint();   // lost the player, go back to the route
@@ -82,10 +103,32 @@ public class EnemyFSM : MonoBehaviour
 
         if (agent.isOnNavMesh)
         {
-            agent.isStopped = false;
             agent.speed = chaseSpeed;
-            agent.SetDestination(sightSensor.detectedObject.transform.position);
+            agent.SetDestination(player.transform.position);
+
+            // Wait at closed doors instead of walking through them
+            bool blocked = ClosedDoorAhead();
+            agent.isStopped = blocked;
+            if (blocked) agent.velocity = Vector3.zero;
         }
+    }
+
+    // Checks toward the next corner of the enemy's path for a closed door.
+    // Door colliders are triggers, so the ray has to include triggers.
+    bool ClosedDoorAhead()
+    {
+        Vector3 origin = agent.transform.position + Vector3.up;   // about waist height
+        Vector3 direction = agent.steeringTarget - agent.transform.position;
+        direction.y = 0f;
+        if (direction == Vector3.zero) return false;
+
+        RaycastHit[] hits = Physics.RaycastAll(origin, direction.normalized, doorCheckDistance, ~0, QueryTriggerInteraction.Collide);
+        foreach (RaycastHit hit in hits)
+        {
+            DoorInteractable door = hit.collider.GetComponentInParent<DoorInteractable>();
+            if (door != null && !door.IsOpen) return true;
+        }
+        return false;
     }
 
     void GoToCurrentPoint()
@@ -113,6 +156,10 @@ public class EnemyFSM : MonoBehaviour
     // Draws the patrol route in the Scene view when the enemy is selected
     void OnDrawGizmosSelected()
     {
+        // Hearing range (yellow circle)
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, hearingRange);
+
         if (patrolPoints == null || patrolPoints.Length < 2) return;
         Gizmos.color = Color.cyan;
         for (int i = 0; i < patrolPoints.Length; i++)

@@ -744,6 +744,11 @@ PrefabInstance:
       propertyPath: itemName
       value: Mystery Key
       objectReference: {fileID: 0}
+    - target: {fileID: 5446798808086617545, guid: b597087acd9325745b92dabc5e1dae33,
+        type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3bba3736cfb91754db484da3ea36a907, type: 3}
     - target: {fileID: 6569740556025367221, guid: b597087acd9325745b92dabc5e1dae33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2485,7 +2490,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 23800000, guid: d2e5d3931132545728f3df1301123081,
+        type: 2}
     - target: {fileID: 5687537342788716852, guid: 813f879c2debf48459ce6c756f2cf05d,
         type: 3}
       propertyPath: m_CollectObjects
@@ -3582,6 +3588,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5446798808086617545, guid: b597087acd9325745b92dabc5e1dae33,
+        type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3bba3736cfb91754db484da3ea36a907, type: 3}
     - target: {fileID: 6569740556025367221, guid: b597087acd9325745b92dabc5e1dae33,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8171,6 +8182,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1673210357}
+    - targetCorrespondingSourceObject: {fileID: 7897420823872174766, guid: 96d98df100c25db4598807162b10c097,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1747394151}
   m_SourcePrefab: {fileID: 100100000, guid: 96d98df100c25db4598807162b10c097, type: 3}
 --- !u!1 &1673210354 stripped
 GameObject:
@@ -8227,8 +8242,10 @@ MonoBehaviour:
     type: 3}
   moveSpeed: 6
   jumpSpeed: 8
+  crouchAction: {fileID: -719144568585480398, guid: d3aef5cf43efd0b4c9880cf9f9dd9cb2,
+    type: 3}
+  crouchSpeed: 5.5
   groundCheckDistance: 3
-  footstepLoop: {fileID: 8300000, guid: 270699023829eae4d811e4fc4f03f5f2, type: 3}
 --- !u!65 &1673210357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8985,6 +9002,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1673210353}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1747394151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673210354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8effee51e6d458a82a8197d31b711f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepClips:
+  - {fileID: 8300000, guid: 1deb201b8bf8f89479323a74e421150b, type: 3}
+  - {fileID: 8300000, guid: 1f2844efbf7abf647ba3d75d510f823a, type: 3}
+  - {fileID: 8300000, guid: 924e3e09c67130946a6d7b666e8b8b68, type: 3}
+  - {fileID: 8300000, guid: 0cfeb72dea261a54cb7672590d2d1656, type: 3}
+  jumpClip: {fileID: 8300000, guid: 187fa882375e64801987f4a620b8b061, type: 3}
 --- !u!1 &1762374983
 GameObject:
   m_ObjectHideFlags: 0
@@ -9481,7 +9516,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: b911662f2b94547e8a834cff9d26a788, type: 3}
   m_Resource: {fileID: 8300000, guid: b911662f2b94547e8a834cff9d26a788, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.75
+  m_Volume: 0.413
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10839,6 +10874,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1082482826370853462, guid: fa2f6bfef745c454b9544fe987aa1892,
         type: 3}
+      propertyPath: hearingRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082482826370853462, guid: fa2f6bfef745c454b9544fe987aa1892,
+        type: 3}
       propertyPath: patrolPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -10862,6 +10902,11 @@ PrefabInstance:
       propertyPath: distance
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4667529182496674820, guid: fa2f6bfef745c454b9544fe987aa1892,
+        type: 3}
+      propertyPath: laughClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 08b4ba6cd22a9ab4986a13fff034f354, type: 3}
     - target: {fileID: 4667529182496674820, guid: fa2f6bfef745c454b9544fe987aa1892,
         type: 3}
       propertyPath: obstacleLayers.m_Bits

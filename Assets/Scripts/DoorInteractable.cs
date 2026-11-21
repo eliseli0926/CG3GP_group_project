@@ -52,6 +52,9 @@ public class DoorInteractable : MonoBehaviour, IInteractable
     private bool isOpen;
     private bool isUnlocked;
 
+    // Lets enemies know whether they can walk through this door
+    public bool IsOpen => isOpen;
+
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private Coroutine swingRoutine;

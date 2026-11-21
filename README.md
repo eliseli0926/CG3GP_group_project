@@ -143,7 +143,7 @@ Based on project Part 1-2 Feedback, adding:
 
 - ~~Update our existing basic UI for inventory, popup boxes, death screen, and main menu~~
 - Add dialogue boxes for NPC interactions and note-reading
-  - _Not completed as planned:_ based on the Part 3 feedback that clues from NPCs can be simpler and given through notes, we decided not to add NPC dialogue. NPCs instead hold pages that the player finds by searching them. The parchment page display from Part 3 already works as our note-reading box, so we restyled it to match the new UI instead of building a separate dialogue box.
+  - _Not completed as planned:_ based on the Part 3 feedback that clues from NPCs can be simpler and given through notes, we decided not to add NPC dialogue. NPCs instead hold pages that the player finds by searching them.
 
 **Animations (Ch 17)**
 
@@ -330,8 +330,6 @@ Ambient environment
 - Updated the UI (inventory, popups, lose screen, main menu, and page display) to use assets from the Bloodlines - Dark UI package.
 - The crosshair now changes appearance when pointing at any IInteractable (red circle filled in with black → red circle filled in with red), so the player can tell what they can interact with.
 
-_[TODO: screenshot of the updated UI, and of the crosshair on and off an interactable]_
-
 **Sound**
 
 - Ambient background audio from Free Horror Ambience 2 plays throughout the game.
@@ -340,27 +338,19 @@ _[TODO: screenshot of the updated UI, and of the crosshair on and off an interac
 - **Footsteps and jumping are tied to the player's animations** using Animation Events. Each walking step plays at the frame where a foot touches the ground, picking randomly between several footstep clips. The jump sound plays when the player takes off. The crouch-walk animation has no events, so crouching is silent.
 - The caretaker laughs on loop while it can see the player, and stops when it loses sight of them. The laugh is a 3D sound with an adjustable range, so it gets louder as the caretaker gets closer.
 
-_[TODO: video demonstrating the footstep, jump, door, and caretaker laughter sounds]_
-
 **Animation**
 
 - Doors now swing open and closed smoothly instead of rotating instantly.
 - Added a crouch-walk animation from Mixamo. The player's Animator switches between idle, walking, jumping, and crouching.
 
-_[TODO: video of the door animation and the player crouching]_
-
 **Keypad and Chest**
 
 - The keypad puzzle from Part 3 is now complete. Clicking the keypad moves the camera in close so the player can click its buttons. Entering the correct code unlocks the chest it is attached to, and pressing E leaves the keypad. Searching the unlocked chest reveals what is inside.
-
-_[TODO: video of entering the keypad code and searching the chest]_
 
 **Caretaker Enemy**
 
 - **Hearing:** the caretaker now hears the player walking within an adjustable range in any direction, and starts chasing them even if it can't see them. It goes back to patrolling once it can neither see nor hear the player. Crouching lets the player sneak past it. The hearing range is shown as a yellow circle in the Scene view.
 - **Doors:** since a NavMeshAgent ignores physics colliders, the caretaker used to walk straight through closed doors. While chasing, it now checks for a closed door just ahead on its path. If there is one, it stops and waits, and it only continues once the door is opened.
-
-_[TODO: video of the caretaker hearing the player from behind, and of crouching past it]_
 
 **Scripts**
 
@@ -389,9 +379,6 @@ _[TODO: video of the caretaker hearing the player from behind, and of crouching 
 - [Free Horror Ambience 2](https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651) - for ambient background audio
 - [Door, Cabinets, & Lockers (Free)](https://assetstore.unity.com/packages/audio/sound-fx/foley/door-cabinets-lockers-free-257610) - for door sfx
 - [Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879) - for player footsteps sfx
-- [Free UI Click Sound Effects Pack](TODO-link) - for UI button click sfx
-- [Horror Elements](TODO-link) - for the caretaker's laughter
-- [General RPG SFX Pack](TODO-link) - for the item pickup sfx
 - ["voc_male_land_03" by pekena_larva on Freesound](https://freesound.org/people/pekena_larva/sounds/667299/) - for the player's jump sfx
 - [Mixamo](https://www.mixamo.com/) - crouch walk animation for the player
 
@@ -412,7 +399,6 @@ _[TODO: video of the caretaker hearing the player from behind, and of crouching 
   - Doors (may be locked and require a key)
   - Pages (click on a non-hostile NPC and then click on the page that appears nearby)
   - Keypads (click on it to focus, enter the correct code, and E to exit focus)
-  - Chests (click on it when it is unlocked to search and reveal its contents)
 - **Walkthrough of the first room:**
   1. Pick up the key on the floor next to the dummy sitting in the corner.
   2. Of the two lockers (cabinets with shelves), open the **left** one with that key. Clicking it without the key shows a "locked" popup.
@@ -422,9 +408,8 @@ _[TODO: video of the caretaker hearing the player from behind, and of crouching 
   - Step into the hallway. The caretaker patrols between two points, pausing at each.
   - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
   - When walking into its view, a reddish vignette should appear on the screen and the caretaker starts laughing. The laughing stops once it loses sight of you.
-  - **Hearing:** walk up behind the caretaker (out of its view). Once you are close, it hears your footsteps, turns around, and chases you. Repeat this while holding Ctrl to crouch: it shouldn't hear you, and you can sneak past.
-  - **Doors:** while it is chasing you, go through a door and close it behind you. The caretaker stops at the closed door and only follows once the door is opened again.
-  - Let it touch you while it can see you to bring up the lose screen.
+  - **Hearing:** walk up behind the caretaker (out of its view). Once you are close, it hears your footsteps, turns around, and chases you. Repeat this while holding Ctrl to crouch, and it shouldn't hear you.
+  - **Doors:** The caretaker stops at the closed door and only follows once the door is opened again.
 - **Testing sound:**
   - Walk and jump to hear the footstep and jump sounds. Crouch-walking should make no footstep sounds.
   - Open, close, and unlock doors, try a locked door, pick up a key, and click UI buttons to hear their sound effects.

@@ -135,42 +135,66 @@ Based on project Part 1-2 Feedback, adding:
 **Audio and Music (Ch 14)**
 
 - Add sound effects for certain interactions (ex: for picking up an item, opening/closing a door, walking, caretaker catching the player, etc.)
+  - _Mostly completed:_ we added sounds for picking up items, opening/closing/unlocking doors, trying a locked door, UI button clicks, player footsteps, and jumping. The caretaker also laughs while it can see the player. The only sound we haven't added is one for the caretaker catching the player. We spent that time on the caretaker's hearing instead (see Additions), since it changes how the game plays. The catch sound is moved to Project Part 4.
 - Add background audio/music which changes when the caretaker starts to chase you
+  - _Partially completed:_ ambient background audio now plays throughout the game. It doesn't switch to a different track during a chase yet. For now, the caretaker's laughter and the red vignette tell the player they've been spotted. Switching the track on chase is moved to Project Part 4.
 
 **User-Friendly UI (Ch 15)**
 
 - ~~Update our existing basic UI for inventory, popup boxes, death screen, and main menu~~
 - Add dialogue boxes for NPC interactions and note-reading
+  - _Not completed as planned:_ based on the Part 3 feedback that clues from NPCs can be simpler and given through notes, we decided not to add NPC dialogue. NPCs instead hold pages that the player finds by searching them. The parchment page display from Part 3 already works as our note-reading box, so we restyled it to match the new UI instead of building a separate dialogue box.
 
 **Animations (Ch 17)**
 
-- Animate the player model
-- Animate caretaker enemy's movement
+- ~~Animate the player model~~
+  - The player now has idle, walking, jumping, and crouch-walking animations.
+- ~~Animate caretaker enemy's movement~~
   - Since basic animations were technically partially completed, we're going to work on 'special' animations in checkpoint 3-4 like the player hiding
+  - _Hiding not completed:_ the hiding animation depends on the hiding-in-cabinets mechanic, which we haven't built yet. Instead, we added crouching as the player's stealth option, so the player can sneak past the caretaker without being heard. Hiding is moved to Project Part 4.
 
 #### Additions
 
 - Based on instructor feedback:
-  - Decided not to freeze the game on opening inventory, because it could prevent the player from continuing to move away from an enemy and cause player death
-  - Animate door open/close
-  - Audio on movement + background music were already planned
+  - ~~Decided not to freeze the game on opening inventory, because it could prevent the player from continuing to move away from an enemy and cause player death~~
+  - ~~Animate door open/close~~
+  - ~~Audio on movement + background music were already planned~~
   - Make the ramp into looking like stairs but walked on as an invisible ramp
-  - Add UI feedback for when cursor hovers over interactable thing vs non-interactable things
+    - _Not completed:_ the ramp is still a plain ramp. We prioritized audio and the new caretaker mechanics for this submission. This is moved to Project Part 4.
+  - ~~Add UI feedback for when cursor hovers over interactable thing vs non-interactable things~~
+- **Crouching:** holding Ctrl makes the player crouch-walk more slowly and silently.
+- **Caretaker hearing:** the caretaker can hear the player walking within an adjustable range, in any direction (including from behind). If it hears the player, it starts chasing even without seeing them. Crouching, standing still, and being in the air make no noise.
+- **Caretaker laughter:** the caretaker laughs on loop while it can see the player. The laugh is a 3D sound, so it is louder when the caretaker is closer.
+- **Caretaker stops at closed doors:** the caretaker used to walk straight through closed doors while chasing the player. It now stops and waits at a closed door and only goes through once the door is open.
 
 ### Project Part 4: Finishing Touches
 
 **Game development**
 
-- TODO: fill in
+- Carried over from Checkpoint 3-4:
+  - Sound effect for the caretaker catching the player
+  - Background audio that changes to chase music while the caretaker is chasing the player
+  - Hiding in cabinets/lockers, with a hiding animation (also from the Part 3 instructor feedback)
+  - Make the ramp look like stairs while still walking on an invisible ramp
+- Make closed doors block the caretaker's line of sight, so it can't see the player through a closed door
+- Add a win condition and ending: the player escapes the manor once they solve the final puzzle
+- Add more rooms, notes, and puzzles to complete the story
+- Update the main menu instructions to include all controls (crouching, inventory, keypad)
+- Playtest the full game from start to finish and adjust the caretaker's speed, view range, and hearing range so the game is tense but fair
 
 **Performance Wizardry (Ch 18)**
 
-- Optimize graphics, processing, and memory
+- Use the Unity Profiler to find the most expensive parts of the game (rendering, scripts, physics)
+- Optimize graphics: occlusion culling so rooms behind walls aren't rendered, static batching for furniture and walls, and checking the cost of the candle point lights and post-processing
+- Optimize processing: reduce work done every frame where possible (e.g. the caretaker's sight check, which currently runs physics queries every frame)
+- Optimize memory: adjust audio and texture import settings (compression, streaming long ambient tracks) and remove imported asset packs that we don't use, such as Demon Horror Creature with Weapon
 
 **Generating and Debugging (Ch 19)**
 
-- Build project
-- Debug build
+- Set up Build Settings so the MainMenu scene loads first, followed by the game scene
+- Build the project as a standalone game
+- Make a Development Build to debug issues that only appear in the build, and profile the build rather than the editor
+- Test the build from start to finish and fix any bugs we find
 
 ## Development
 
@@ -301,12 +325,53 @@ Ambient environment
 
 ### Project Checkpoint 3-4: Sound, UI, and Animation
 
-- Updated the UI to use assets from the Bloodlines - Dark UI package
-- Adjusted crosshair so it changes appearance (red circle filled in with black --> red circle filled in with red) upon pointing at any IInteractable
-- Added ambient audio from Free Horror Ambience 2
-- Added door animations
-- Added audio for object interactions (door open/close, when locked/when player unlocks; item pickup; button click)
-- Implemented keypad interaction and unlocking the chest to be searched
+**UI**
+
+- Updated the UI (inventory, popups, lose screen, main menu, and page display) to use assets from the Bloodlines - Dark UI package.
+- The crosshair now changes appearance when pointing at any IInteractable (red circle filled in with black → red circle filled in with red), so the player can tell what they can interact with.
+
+_[TODO: screenshot of the updated UI, and of the crosshair on and off an interactable]_
+
+**Sound**
+
+- Ambient background audio from Free Horror Ambience 2 plays throughout the game.
+- Doors play sounds when opening, closing, being unlocked with a key, and when the player tries a locked door. Door sounds are 3D and play with a slight random pitch change, so repeated sounds don't feel robotic.
+- Picking up an item and clicking UI buttons play sound effects.
+- **Footsteps and jumping are tied to the player's animations** using Animation Events. Each walking step plays at the frame where a foot touches the ground, picking randomly between several footstep clips. The jump sound plays when the player takes off. The crouch-walk animation has no events, so crouching is silent.
+- The caretaker laughs on loop while it can see the player, and stops when it loses sight of them. The laugh is a 3D sound with an adjustable range, so it gets louder as the caretaker gets closer.
+
+_[TODO: video demonstrating the footstep, jump, door, and caretaker laughter sounds]_
+
+**Animation**
+
+- Doors now swing open and closed smoothly instead of rotating instantly.
+- Added a crouch-walk animation from Mixamo. The player's Animator switches between idle, walking, jumping, and crouching.
+
+_[TODO: video of the door animation and the player crouching]_
+
+**Keypad and Chest**
+
+- The keypad puzzle from Part 3 is now complete. Clicking the keypad moves the camera in close so the player can click its buttons. Entering the correct code unlocks the chest it is attached to, and pressing E leaves the keypad. Searching the unlocked chest reveals what is inside.
+
+_[TODO: video of entering the keypad code and searching the chest]_
+
+**Caretaker Enemy**
+
+- **Hearing:** the caretaker now hears the player walking within an adjustable range in any direction, and starts chasing them even if it can't see them. It goes back to patrolling once it can neither see nor hear the player. Crouching lets the player sneak past it. The hearing range is shown as a yellow circle in the Scene view.
+- **Doors:** since a NavMeshAgent ignores physics colliders, the caretaker used to walk straight through closed doors. While chasing, it now checks for a closed door just ahead on its path. If there is one, it stops and waits, and it only continues once the door is opened.
+
+_[TODO: video of the caretaker hearing the player from behind, and of crouching past it]_
+
+**Scripts**
+
+- **PlayerAnimationSounds** is attached to the player's Animator object. It has Footstep() and JumpSound() functions, which are called by Animation Events on the walking and jumping clips.
+- **PlayerMovement** now handles crouching (hold Ctrl): it slows the player down and sets the Animator's Crouch parameter. It also exposes an IsMakingNoise property, which is true only while the player is walking on the ground without crouching.
+- **EnemyFSM** now switches to chasing when the caretaker sees **or** hears the player. While chasing, it casts a short ray toward the next corner of its path and stops if it hits a closed door.
+- **Sight** now loops the caretaker's laughter while the player is visible.
+- **DoorInteractable** now swings the door with a coroutine, plays the door sounds, and exposes whether the door is open (IsOpen) so the caretaker can check it.
+- **KeypadFocus** is attached to the keypad. Clicking it moves the camera to a focus point in front of the keypad and frees the cursor to press its buttons, and pressing E returns to normal play. When the correct code is entered, the keypad unlocks the object it is attached to.
+- **ChestInteractable** is a chest that can be searched once unlocked. If it is still locked, it shows a popup message. Once unlocked, searching it reveals its contents.
+- **PlayerInteractor** now changes the crosshair's appearance while it is pointing at an interactable object.
 
 - **Assets Used**
 
@@ -324,6 +389,11 @@ Ambient environment
 - [Free Horror Ambience 2](https://assetstore.unity.com/packages/audio/music/free-horror-ambience-2-215651) - for ambient background audio
 - [Door, Cabinets, & Lockers (Free)](https://assetstore.unity.com/packages/audio/sound-fx/foley/door-cabinets-lockers-free-257610) - for door sfx
 - [Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879) - for player footsteps sfx
+- [Free UI Click Sound Effects Pack](TODO-link) - for UI button click sfx
+- [Horror Elements](TODO-link) - for the caretaker's laughter
+- [General RPG SFX Pack](TODO-link) - for the item pickup sfx
+- ["voc_male_land_03" by pekena_larva on Freesound](https://freesound.org/people/pekena_larva/sounds/667299/) - for the player's jump sfx
+- [Mixamo](https://www.mixamo.com/) - crouch walk animation for the player
 
 ## Instructions for Testing the Project
 
@@ -332,9 +402,10 @@ Ambient environment
 - **Player controls:**
   - WASD for horizontal movement
   - Space to jump
+  - Hold Ctrl to crouch (slower, but silent)
   - Move the mouse to orbit the camera around the player
-  - Align the crosshair dot with an interactable object and left-click to interact
-  - Esc, then click the Inventory button in the top right to see your inventory. Click outside the gray UI to close it.
+  - Align the crosshair dot with an interactable object and left-click to interact. The crosshair fills in red when it is on something interactable.
+  - Press I to open/close the inventory
 - **Current interactables:**
   - Keys (picked up into the inventory)
   - Cabinets/lockers (may be locked and require a key)
@@ -350,8 +421,13 @@ Ambient environment
 - **Testing the caretaker:**
   - Step into the hallway. The caretaker patrols between two points, pausing at each.
   - Walk into its view. It speeds up and chases you. Break line of sight behind a wall and it returns to its route.
-  - When walking into its view, a reddish vignette should appear on the screen.
+  - When walking into its view, a reddish vignette should appear on the screen and the caretaker starts laughing. The laughing stops once it loses sight of you.
+  - **Hearing:** walk up behind the caretaker (out of its view). Once you are close, it hears your footsteps, turns around, and chases you. Repeat this while holding Ctrl to crouch: it shouldn't hear you, and you can sneak past.
+  - **Doors:** while it is chasing you, go through a door and close it behind you. The caretaker stops at the closed door and only follows once the door is opened again.
   - Let it touch you while it can see you to bring up the lose screen.
+- **Testing sound:**
+  - Walk and jump to hear the footstep and jump sounds. Crouch-walking should make no footstep sounds.
+  - Open, close, and unlock doors, try a locked door, pick up a key, and click UI buttons to hear their sound effects.
 - **Testing the keypad and chest:**
   - In the second room, there is a keypad attached to a locked chest. The chest will have a PopupMessage if you try to interact before it is unlocked.
   - Click on the keypad to zoom in and view its buttons. The keypad's code is 5567.
